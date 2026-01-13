@@ -1,0 +1,1020 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Display Device Management | Smart Notice Board</title>
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: #1e293b;
+    min-height: 100vh;
+}
+
+.top-header {
+    background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+    color: white;
+    padding: 18px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.header-left {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.layout {
+    display: flex;
+    max-width: 1920px;
+    margin: 0 auto;
+}
+
+.sidebar {
+    width: 260px;
+    background: linear-gradient(180deg, #1e293b 0%, #0f172a 100%);
+    min-height: calc(100vh - 70px);
+    padding: 25px 0;
+}
+
+.sidebar a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #cbd5e1;
+    text-decoration: none;
+    padding: 16px 28px;
+    font-size: 14px;
+    font-weight: 600;
+    transition: all 0.3s;
+    border-left: 4px solid transparent;
+}
+
+.sidebar a:hover, .sidebar a.active {
+    background: linear-gradient(90deg, rgba(59, 130, 246, 0.2) 0%, transparent 100%);
+    color: white;
+    border-left-color: #60a5fa;
+}
+
+.page-content {
+    flex: 1;
+    padding: 30px;
+    background: #f8fafc;
+}
+
+.section {
+    background: white;
+    border-radius: 12px;
+    padding: 25px;
+    margin-bottom: 25px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.07);
+}
+
+.section-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: #1e40af;
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 3px solid #3b82f6;
+}
+
+.alert {
+    padding: 14px 18px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.alert-info {
+    background: linear-gradient(135deg, #dbeafe 0%, #e0e7ff 100%);
+    border: 2px solid #93c5fd;
+    color: #1e40af;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    color: #334155;
+    margin-bottom: 8px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 10px 12px;
+    font-size: 13px;
+    border: 2px solid #cbd5e1;
+    border-radius: 6px;
+    font-family: inherit;
+    transition: all 0.3s;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.required {
+    color: #ef4444;
+    margin-left: 2px;
+}
+
+.note-text {
+    font-size: 12px;
+    color: #64748b;
+    margin-top: 5px;
+    font-style: italic;
+}
+
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.checkbox-group input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: #3b82f6;
+}
+
+.button-group {
+    display: flex;
+    gap: 14px;
+    margin-top: 25px;
+}
+
+.primary-btn {
+    padding: 14px 32px;
+    background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+    color: white;
+    border: none;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: all 0.3s;
+}
+
+.primary-btn:hover {
+    background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+    transform: translateY(-2px);
+}
+
+.secondary-btn {
+    padding: 14px 32px;
+    background: linear-gradient(135deg, #64748b 0%, #475569 100%);
+    color: white;
+    border: none;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: all 0.3s;
+}
+
+.devices-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.devices-table thead {
+    background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+    color: white;
+}
+
+.devices-table th {
+    padding: 14px;
+    text-align: left;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.devices-table td {
+    padding: 12px 14px;
+    font-size: 13px;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.devices-table tbody tr:hover {
+    background: #f8fafc;
+}
+
+.status-badge {
+    padding: 6px 12px;
+    border-radius: 16px;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.status-active {
+    background: #d1fae5;
+    color: #065f46;
+}
+
+.status-offline {
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+.status-pending {
+    background: #fef3c7;
+    color: #92400e;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 8px;
+}
+
+.edit-btn, .delete-btn, .test-btn {
+    padding: 6px 12px;
+    border: none;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.edit-btn {
+    background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+    color: white;
+}
+
+.test-btn {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    color: white;
+}
+
+.delete-btn {
+    background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+    color: white;
+}
+
+.device-preview {
+    background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+    border: 2px dashed #3b82f6;
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 20px;
+}
+
+.device-preview h4 {
+    color: #1e40af;
+    margin-bottom: 15px;
+}
+
+.preview-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    font-size: 13px;
+}
+
+.preview-item {
+    padding: 10px;
+    background: white;
+    border-radius: 6px;
+}
+
+.preview-item strong {
+    color: #1e40af;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.config-code {
+    background: #1e293b;
+    color: #e2e8f0;
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 20px;
+    font-family: 'Courier New', monospace;
+    font-size: 12px;
+    overflow-x: auto;
+}
+
+.copy-btn {
+    float: right;
+    padding: 6px 12px;
+    background: #3b82f6;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 11px;
+    margin-bottom: 10px;
+}
+</style>
+</head>
+<body>
+
+<div class="top-header">
+    <div class="header-left">🖥️ DISPLAY DEVICE MANAGEMENT</div>
+    <div class="header-right">
+        <span id="headerUserInfo">Admin Panel</span>
+    </div>
+</div>
+
+<div class="layout">
+
+<div class="sidebar">
+    <a href="home.html" class="active">
+        <span class="sidebar-icon">🏠</span>
+        HOME
+    </a>
+    <a href="dashboard.html">
+        <span class="sidebar-icon">📊</span>
+        DASHBOARD
+    </a>
+    <a href="add-information.html">
+        <span class="sidebar-icon">➕</span>
+        ADD INFORMATION
+    </a>
+    <a href="#">
+        <span class="sidebar-icon">📅</span>
+        SCHEDULE MANAGER
+    </a>
+     <a href="device-management.html" class="active">
+        <span>🖥️</span> DISPLAY DEVICES
+    </a>
+    <a href="settings.html">
+        <span class="sidebar-icon">⚙️</span>
+        SETTINGS
+    </a>
+    <a href="#" onclick="logout()">
+        <span class="sidebar-icon">🚪</span>
+        LOGOUT
+    </a>
+</div>
+
+<div class="page-content">
+
+<!-- Alert -->
+<div class="alert alert-info">
+    <div>
+        <strong>ℹ️ Display Device Management:</strong> Configure Raspberry Pi displays for the smart notice board system. Each device must have a unique display code, static IP, and MAC address. Use the generated configuration script on your Raspberry Pi for automatic setup.
+    </div>
+</div>
+
+<!-- Add Device Form -->
+<div class="section">
+    <div class="section-title">➕ ADD NEW DISPLAY DEVICE</div>
+    
+    <form id="addDeviceForm">
+        <div class="form-grid">
+            
+            <!-- Basic Information -->
+            <div>
+                <h4 style="color: #1e40af; margin-bottom: 15px;">📝 Basic Information</h4>
+                
+                <div class="form-group">
+                    <label>Display Name <span class="required">*</span></label>
+                    <input type="text" id="displayName" placeholder="e.g., ECE Main Display" required>
+                    <div class="note-text">User-friendly name for this display</div>
+                </div>
+                
+                <div class="form-group">
+                    <label>Display Code <span class="required">*</span></label>
+                    <input type="text" id="displayCode" placeholder="e.g., ece-main" required pattern="[a-z0-9-]+">
+                    <div class="note-text">Unique identifier (lowercase, numbers, hyphens only)</div>
+                </div>
+                
+                <div class="form-group">
+                    <label>Department <span class="required">*</span></label>
+                    <select id="department" required>
+                        <option value="">-- Select Department --</option>
+                        <option value="Electronics and Communication|ECE">ECE - Electronics and Communication</option>
+                        <option value="Computer Science|CSE">CSE - Computer Science</option>
+                        <option value="Mechanical Engineering|MECH">MECH - Mechanical Engineering</option>
+                        <option value="Civil Engineering|CIVIL">CIVIL - Civil Engineering</option>
+                        <option value="Electrical Engineering|EE">EE - Electrical Engineering</option>
+                        <option value="Institute|INST">INST - Institute Level</option>
+                        <option value="Administration|ADMIN">ADMIN - Administration</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label>Display Type <span class="required">*</span></label>
+                    <select id="displayType" required>
+                        <option value="department">Department Level</option>
+                        <option value="institute">Institute Level</option>
+                    </select>
+                </div>
+            </div>
+            
+            <!-- Network Configuration -->
+            <div>
+                <h4 style="color: #1e40af; margin-bottom: 15px;">🌐 Network Configuration</h4>
+                
+                <div class="form-group">
+                    <label>Static IP Address <span class="required">*</span></label>
+                    <input type="text" id="ipAddress" placeholder="e.g., 192.168.1.101" required pattern="^(\d{1,3}\.){3}\d{1,3}$">
+                    <div class="note-text">Must be unique and within your network range</div>
+                </div>
+                
+                <div class="form-group">
+                    <label>MAC Address <span class="required">*</span></label>
+                    <input type="text" id="macAddress" placeholder="e.g., B8:27:EB:XX:XX:XX" required pattern="([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})">
+                    <div class="note-text">Physical address of the Raspberry Pi network card</div>
+                </div>
+                
+                <div class="form-group">
+                    <label>Gateway IP</label>
+                    <input type="text" id="gateway" placeholder="e.g., 192.168.1.1" value="192.168.1.1" pattern="^(\d{1,3}\.){3}\d{1,3}$">
+                </div>
+                
+                <div class="form-group">
+                    <label>DNS Servers</label>
+                    <input type="text" id="dnsServers" placeholder="e.g., 8.8.8.8, 8.8.4.4" value="8.8.8.8">
+                    <div class="note-text">Comma-separated DNS server IPs</div>
+                </div>
+                
+                <div class="checkbox-group">
+                    <input type="checkbox" id="wifiEnabled">
+                    <label for="wifiEnabled">Enable WiFi Connection</label>
+                </div>
+                
+                <div class="form-group" id="wifiConfig" style="display: none;">
+                    <label>WiFi SSID</label>
+                    <input type="text" id="wifiSSID" placeholder="Your WiFi Network Name">
+                    <label style="margin-top: 10px;">WiFi Password</label>
+                    <input type="password" id="wifiPassword" placeholder="WiFi Password">
+                </div>
+            </div>
+            
+            <!-- Device Information -->
+            <div>
+                <h4 style="color: #1e40af; margin-bottom: 15px;">💻 Device Information</h4>
+                
+                <div class="form-group">
+                    <label>Raspberry Pi Model</label>
+                    <input type="text" id="piModel" placeholder="e.g., Raspberry Pi 4 Model B">
+                </div>
+                
+                <div class="form-group">
+                    <label>Serial Number</label>
+                    <input type="text" id="serialNumber" placeholder="e.g., 100000001234abcd">
+                    <div class="note-text">Get with: cat /proc/cpuinfo | grep Serial</div>
+                </div>
+                
+                <div class="form-group">
+                    <label>OS Version</label>
+                    <input type="text" id="osVersion" placeholder="e.g., Raspberry Pi OS 12 (Bookworm)">
+                </div>
+                
+                <div class="form-group">
+                    <label>Installation Date</label>
+                    <input type="date" id="installDate">
+                </div>
+            </div>
+            
+            <!-- Location & Display -->
+            <div>
+                <h4 style="color: #1e40af; margin-bottom: 15px;">📍 Location & Display</h4>
+                
+                <div class="form-group">
+                    <label>Location <span class="required">*</span></label>
+                    <input type="text" id="location" placeholder="e.g., ECE Department - Main Entrance" required>
+                </div>
+                
+                <div class="form-group">
+                    <label>Building</label>
+                    <input type="text" id="building" placeholder="e.g., Engineering Block A">
+                </div>
+                
+                <div class="form-group">
+                    <label>Floor</label>
+                    <input type="text" id="floor" placeholder="e.g., Ground Floor">
+                </div>
+                
+                <div class="form-group">
+                    <label>Room/Area</label>
+                    <input type="text" id="room" placeholder="e.g., Near Reception">
+                </div>
+                
+                <div class="form-group">
+                    <label>Screen Orientation</label>
+                    <select id="orientation">
+                        <option value="landscape">Landscape (16:9)</option>
+                        <option value="portrait">Portrait (9:16)</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label>Screen Resolution</label>
+                    <select id="resolution">
+                        <option value="1920x1080">1920x1080 (Full HD)</option>
+                        <option value="1366x768">1366x768 (HD)</option>
+                        <option value="1280x720">1280x720 (HD Ready)</option>
+                        <option value="3840x2160">3840x2160 (4K)</option>
+                    </select>
+                </div>
+            </div>
+            
+            <!-- Configuration Settings -->
+            <div>
+                <h4 style="color: #1e40af; margin-bottom: 15px;">⚙️ Display Configuration</h4>
+                
+                <div class="form-group">
+                    <label>Auto Refresh Interval (seconds)</label>
+                    <input type="number" id="autoRefresh" value="30" min="10" max="300">
+                </div>
+                
+                <div class="form-group">
+                    <label>Slide Duration (seconds)</label>
+                    <input type="number" id="slideDuration" value="5" min="3" max="30">
+                </div>
+                
+                <div class="form-group">
+                    <label>Default Temperature (°C)</label>
+                    <input type="number" id="temperature" value="22" min="15" max="35">
+                </div>
+                
+                <div class="form-group">
+                    <label>Default Humidity (%)</label>
+                    <input type="number" id="humidity" value="45" min="20" max="80">
+                </div>
+                
+                <div class="form-group">
+                    <label>HOD/Admin Name</label>
+                    <input type="text" id="hodName" placeholder="e.g., Dr. Rajesh Kumar">
+                </div>
+                
+                <div class="checkbox-group">
+                    <input type="checkbox" id="showNav" checked>
+                    <label for="showNav">Show Top Navigation Bar</label>
+                </div>
+                
+                <div class="checkbox-group">
+                    <input type="checkbox" id="showRightSidebar" checked>
+                    <label for="showRightSidebar">Show Right Statistics Sidebar</label>
+                </div>
+                
+                <div class="checkbox-group">
+                    <input type="checkbox" id="showLeftSidebar" checked>
+                    <label for="showLeftSidebar">Show Left Classroom Data</label>
+                </div>
+            </div>
+            
+            <!-- Additional Notes -->
+            <div>
+                <h4 style="color: #1e40af; margin-bottom: 15px;">📝 Additional Information</h4>
+                
+                <div class="form-group">
+                    <label>Contact Person</label>
+                    <input type="text" id="contactPerson" placeholder="Name of person responsible">
+                </div>
+                
+                <div class="form-group">
+                    <label>Contact Phone</label>
+                    <input type="tel" id="contactPhone" placeholder="e.g., +91 98765 43210">
+                </div>
+                
+                <div class="form-group">
+                    <label>Contact Email</label>
+                    <input type="email" id="contactEmail" placeholder="email@university.edu">
+                </div>
+                
+                <div class="form-group">
+                    <label>Notes</label>
+                    <textarea id="notes" rows="4" placeholder="Any additional notes or comments about this display..."></textarea>
+                </div>
+            </div>
+            
+        </div>
+        
+        <div class="button-group">
+            <button type="submit" class="primary-btn">💾 SAVE DEVICE</button>
+            <button type="button" class="secondary-btn" onclick="resetForm()">🔄 RESET FORM</button>
+            <button type="button" class="secondary-btn" onclick="generatePreview()">👁️ PREVIEW</button>
+        </div>
+    </form>
+    
+    <!-- Device Preview -->
+    <div class="device-preview" id="devicePreview" style="display: none;">
+        <h4>📋 Device Preview</h4>
+        <div class="preview-grid" id="previewContent"></div>
+    </div>
+</div>
+
+<!-- Configuration Script Generator -->
+<div class="section">
+    <div class="section-title">🛠️ RASPBERRY PI CONFIGURATION SCRIPT</div>
+    
+    <p style="margin-bottom: 20px; color: #64748b;">
+        After saving the device, copy and run this script on your Raspberry Pi to automatically configure the display.
+    </p>
+    
+    <button class="copy-btn" onclick="copyConfigScript()">📋 Copy Script</button>
+    <div class="config-code" id="configScript">
+        Click "Save Device" to generate configuration script...
+    </div>
+</div>
+
+<!-- Registered Devices -->
+<div class="section">
+    <div class="section-title">🖥️ REGISTERED DISPLAY DEVICES</div>
+    
+    <div id="devicesContainer">
+        <table class="devices-table">
+            <thead>
+                <tr>
+                    <th>Display Name</th>
+                    <th>Code</th>
+                    <th>IP Address</th>
+                    <th>MAC Address</th>
+                    <th>Department</th>
+                    <th>Location</th>
+                    <th>Status</th>
+                    <th>Last Active</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="devicesTableBody">
+                <tr>
+                    <td colspan="9" style="text-align: center; color: #64748b;">
+                        Loading devices...
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+</div>
+</div>
+
+<script>
+const API_URL = 'http://localhost:5000/api';
+let displays = [];
+
+// Initialize
+window.onload = async function() {
+    await loadDevices();
+    
+    // WiFi toggle
+    document.getElementById('wifiEnabled').addEventListener('change', function() {
+        document.getElementById('wifiConfig').style.display = this.checked ? 'block' : 'none';
+    });
+};
+
+// Load devices
+async function loadDevices() {
+    try {
+        const response = await fetch(`${API_URL}/displays`);
+        const result = await response.json();
+        
+        if (result.success) {
+            displays = result.data;
+            displayDevices();
+        }
+    } catch (error) {
+        console.error('Error loading devices:', error);
+    }
+}
+
+// Display devices table
+function displayDevices() {
+    const tbody = document.getElementById('devicesTableBody');
+    
+    if (displays.length === 0) {
+        tbody.innerHTML = `
+            <tr>
+                <td colspan="9" style="text-align: center; color: #64748b;">
+                    No devices registered yet. Add your first display device above.
+                </td>
+            </tr>
+        `;
+        return;
+    }
+    
+    tbody.innerHTML = '';
+    displays.forEach(device => {
+        const statusClass = device.status === 'active' ? 'status-active' : 'status-offline';
+        const statusText = device.status === 'active' ? '🟢 Online' : '🔴 Offline';
+        
+        const lastActive = new Date(device.lastActive).toLocaleString();
+        
+        const row = document.createElement('tr');
+        row.innerHTML = `
+            <td><strong>${device.displayName}</strong></td>
+            <td><code>${device.displayCode}</code></td>
+            <td>${device.ipAddress}</td>
+            <td><small>${device.macAddress}</small></td>
+            <td>${device.departmentCode}</td>
+            <td>${device.location}</td>
+            <td><span class="status-badge ${statusClass}">${statusText}</span></td>
+            <td><small>${lastActive}</small></td>
+            <td>
+                <div class="action-buttons">
+                    <button class="test-btn" onclick="testDevice('${device.displayCode}')">🔍 Test</button>
+                    <button class="edit-btn" onclick="editDevice('${device.displayId}')">✏️ Edit</button>
+                    <button class="delete-btn" onclick="deleteDevice('${device.displayId}')">🗑️ Delete</button>
+                </div>
+            </td>
+        `;
+        tbody.appendChild(row);
+    });
+}
+
+// Form submission
+document.getElementById('addDeviceForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    
+    const deptValue = document.getElementById('department').value.split('|');
+    
+    const deviceData = {
+        displayName: document.getElementById('displayName').value,
+        displayCode: document.getElementById('displayCode').value,
+        department: deptValue[0],
+        departmentCode: deptValue[1],
+        displayType: document.getElementById('displayType').value,
+        ipAddress: document.getElementById('ipAddress').value,
+        macAddress: document.getElementById('macAddress').value.toUpperCase(),
+        gateway: document.getElementById('gateway').value,
+        dnsServers: document.getElementById('dnsServers').value,
+        wifiEnabled: document.getElementById('wifiEnabled').checked,
+        wifiSSID: document.getElementById('wifiSSID').value,
+        wifiPassword: document.getElementById('wifiPassword').value,
+        piModel: document.getElementById('piModel').value,
+        serialNumber: document.getElementById('serialNumber').value,
+        osVersion: document.getElementById('osVersion').value,
+        installDate: document.getElementById('installDate').value,
+        location: document.getElementById('location').value,
+        building: document.getElementById('building').value,
+        floor: document.getElementById('floor').value,
+        room: document.getElementById('room').value,
+        orientation: document.getElementById('orientation').value,
+        resolution: document.getElementById('resolution').value,
+        config: {
+            autoRefresh: parseInt(document.getElementById('autoRefresh').value),
+            slideDuration: parseInt(document.getElementById('slideDuration').value),
+            temperature: parseInt(document.getElementById('temperature').value),
+            humidity: parseInt(document.getElementById('humidity').value),
+            hodName: document.getElementById('hodName').value,
+            showNav: document.getElementById('showNav').checked,
+            showRightSidebar: document.getElementById('showRightSidebar').checked,
+            showLeftSidebar: document.getElementById('showLeftSidebar').checked
+        },
+        contactPerson: document.getElementById('contactPerson').value,
+        contactPhone: document.getElementById('contactPhone').value,
+        contactEmail: document.getElementById('contactEmail').value,
+        notes: document.getElementById('notes').value,
+        status: 'pending'
+    };
+    
+    console.log('Saving device:', deviceData);
+    
+    try {
+        const response = await fetch(`${API_URL}/displays`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${localStorage.getItem('token')}`
+            },
+            body: JSON.stringify(deviceData)
+        });
+        
+        const result = await response.json();
+        
+        if (result.success) {
+            alert(`✅ Device registered successfully!\n\nDisplay Code: ${deviceData.displayCode}\nIP Address: ${deviceData.ipAddress}\n\nCopy the configuration script below and run it on your Raspberry Pi.`);
+            
+            generateConfigScript(deviceData);
+            await loadDevices();
+            resetForm();
+        } else {
+            alert('❌ Failed to register device: ' + result.message);
+        }
+    } catch (error) {
+        console.error('Error saving device:', error);
+        alert('❌ Error connecting to server. Make sure server is running!');
+    }
+});
+
+// Generate configuration script
+function generateConfigScript(device) {
+    const script = `#!/bin/bash
+# Smart Notice Board - Raspberry Pi Setup Script
+# Generated on: ${new Date().toLocaleString()}
+# Device: ${device.displayName}
+# Code: ${device.displayCode}
+
+echo "🚀 Starting Smart Notice Board Display Configuration..."
+
+# Update system
+echo "📦 Updating system..."
+sudo apt-get update
+sudo apt-get upgrade -y
+
+# Install required packages
+echo "📥 Installing required packages..."
+sudo apt-get install -y chromium-browser unclutter xdotool
+
+# Configure static IP
+echo "🌐 Configuring static IP..."
+sudo bash -c 'cat >> /etc/dhcpcd.conf << EOF
+
+# Smart Notice Board Display Configuration
+interface eth0
+static ip_address=${device.ipAddress}/24
+static routers=${device.gateway}
+static domain_name_servers=${device.dnsServers}
+
+${device.wifiEnabled ? `interface wlan0
+static ip_address=${device.ipAddress}/24
+static routers=${device.gateway}
+static domain_name_servers=${device.dnsServers}` : ''}
+EOF'
+
+${device.wifiEnabled ? `# Configure WiFi
+echo "📡 Configuring WiFi..."
+sudo bash -c 'cat >> /etc/wpa_supplicant/wpa_supplicant.conf << EOF
+
+network={
+    ssid="${device.wifiSSID}"
+    psk="${device.wifiPassword}"
+}
+EOF'` : ''}
+
+# Create display directory
+echo "📁 Creating display directory..."
+mkdir -p /home/pi/smart-display
+
+# Download display HTML
+echo "⬇️ Downloading display screen..."
+# Replace SERVER_IP with your actual server IP
+SERVER_IP="YOUR_SERVER_IP"
+curl -o /home/pi/smart-display/display-screen.html "http://\${SERVER_IP}:5000/display-screen.html"
+
+# Update display configuration
+echo "⚙️ Configuring display settings..."
+sed -i 's/const DISPLAY_CODE = .*/const DISPLAY_CODE = \"${device.displayCode}\";/' /home/pi/smart-display/display-screen.html
+sed -i "s|const SERVER_URL = .*|const SERVER_URL = 'http://\${SERVER_IP}:5000/api';|" /home/pi/smart-display/display-screen.html
+sed -i 's/const REFRESH_INTERVAL = .*/const REFRESH_INTERVAL = ${device.config.autoRefresh * 1000};/' /home/pi/smart-display/display-screen.html
+sed -i 's/const SLIDE_DURATION = .*/const SLIDE_DURATION = ${device.config.slideDuration * 1000};/' /home/pi/smart-display/display-screen.html
+
+# Create startup script
+echo "🚀 Creating startup script..."
+cat > /home/pi/start-display.sh << 'EOF'
+#!/bin/bash
+
+# Wait for network
+sleep 10
+
+# Hide mouse cursor
+unclutter -idle 0 &
+
+# Start Chromium in kiosk mode
+chromium-browser \\
+    --kiosk \\
+    --noerrdialogs \\
+    --disable-infobars \\
+    --disable-session-crashed-bubble \\
+    --no-first-run \\
+    --disable-translate \\
+    --disk-cache-size=1 \\
+    file:///home/pi/smart-display/display-screen.html &
+
+# Auto-refresh every 30 minutes
+while true; do
+    sleep 1800
+    xdotool key F5
+done
+EOF
+
+chmod +x /home/pi/start-display.sh
+
+# Configure autostart
+echo "🔧 Configuring autostart..."
+mkdir -p ~/.config/lxsession/LXDE-pi
+cat > ~/.config/lxsession/LXDE-pi/autostart << 'EOF'
+@lxpanel --profile LXDE-pi
+@pcmanfm --desktop --profile LXDE-pi
+@xscreensaver -no-splash
+@xset s off
+@xset -dpms
+@xset s noblank
+@/home/pi/start-display.sh
+EOF
+
+# Save device information
+echo "💾 Saving device information..."
+cat > /home/pi/smart-display/device-info.txt << EOF
+Device Name: ${device.displayName}
+Display Code: ${device.displayCode}
+IP Address: ${device.ipAddress}
+MAC Address: ${device.macAddress}
+Department: ${device.department}
+Location: ${device.location}
+Configuration Date: $(date)
+EOF
+
+echo "✅ Configuration complete!"
+echo ""
+echo "📋 Device Information:"
+echo "   Name: ${device.displayName}"
+echo "   Code: ${device.displayCode}"
+echo "   IP: ${device.ipAddress}"
+echo "   MAC: ${device.macAddress}"
+echo ""
+echo "🔄 Please reboot your Raspberry Pi to apply changes:"
+echo "   sudo reboot"
+`;
+    
+    document.getElementById('configScript').textContent = script;
+}
+
+// Copy script
+function copyConfigScript() {
+    const script = document.getElementById('configScript').textContent;
+    navigator.clipboard.writeText(script).then(() => {
+        alert('✅ Configuration script copied to clipboard!');
+    });
+}
+
+// Preview device
+function generatePreview() {
+    const deptValue = document.getElementById('department').value.split('|');
+    
+    const preview = `
+        <div class="preview-item"><strong>Display Name:</strong> ${document.getElementById('displayName').value}</div>
+        <div class="preview-item"><strong>Display Code:</strong> ${document.getElementById('displayCode').value}</div>
+        <div class="preview-item"><strong>IP Address:</strong> ${document.getElementById('ipAddress').value}</div>
+        <div class="preview-item"><strong>MAC Address:</strong> ${document.getElementById('macAddress').value}</div>
+        <div class="preview-item"><strong>Department:</strong> ${deptValue[0]}</div>
+        <div class="preview-item"><strong>Location:</strong> ${document.getElementById('location').value}</div>
+        <div class="preview-item"><strong>Resolution:</strong> ${document.getElementById('resolution').value}</div>
+        <div class="preview-item"><strong>Orientation:</strong> ${document.getElementById('orientation').value}</div>
+    `;
+    
+    document.getElementById('previewContent').innerHTML = preview;
+    document.getElementById('devicePreview').style.display = 'block';
+}
+
+// Test device
+async function testDevice(displayCode) {
+    try {
+        const response = await fetch(`${API_URL}/displays/${displayCode}/content`);
+        const result = await response.json();
+        
+        if (result.success) {
+            alert(`✅ Device Test Successful!\n\nDisplay: ${displayCode}\nContent Items: ${result.contentCount}\nStatus: Online`);
+        } else {
+            alert(`❌ Device Test Failed!\n\nDisplay: ${displayCode}\nError: ${result.message}`);
+        }
+    } catch (error) {
+        alert(`❌ Cannot connect to device!\n\nDisplay: ${displayCode}\nError: ${error.message}`);
+    }
+}
+
+// Reset form
+function resetForm() {
+    document.getElementById('addDeviceForm').reset();
+    document.getElementById('devicePreview').style.display = 'none';
+    document.getElementById('wifiConfig').style.display = 'none';
+}
+
+// Logout
+function logout() {
+    if (confirm('🚪 Are you sure you want to logout?')) {
+        localStorage.removeItem('token');
+        localStorage.removeItem('user');
+        window.location.href = 'login.html';
+    }
+}
+</script>
+
+</body>
+</html>

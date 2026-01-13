@@ -1,0 +1,68 @@
+
+<!-- SIDEBAR -->
+<div class="sidebar">
+    <a href="home.html" class="active">
+        <span class="sidebar-icon">🏠</span>
+        HOME
+    </a>
+    <a href="dashboard.html">
+        <span class="sidebar-icon">📊</span>
+        DASHBOARD
+    </a>
+    <a href="add-information.html" class="active">
+        <span class="sidebar-icon">➕</span>
+        ADD INFORMATION
+    </a>
+    <a href="#">
+        <span class="sidebar-icon">📅</span>
+        SCHEDULE MANAGER
+    </a>
+    <a href="settings.html">
+        <span class="sidebar-icon">⚙️</span>
+        SETTINGS
+    </a>
+    <a href="#" onclick="logout()">
+        <span class="sidebar-icon">🚪</span>
+        LOGOUT
+    </a>
+</div>
+
+
+let users = [
+    {
+        userId: 'FAC-1011',
+        name: 'HEMANT HARLALKA',
+        email: 'hemantharlalka@university.edu',
+        password: 'hemant@123', // ⚠️ Plain text for testing only!
+        role: 'faculty',
+        department: 'Electronics and Communication',
+        departmentCode: 'ECE',
+        postingScope: 'department',
+        canPostInstitute: false,
+        requiresApproval: true
+    },
+     {
+        userId: 'FAC-1012',
+        name: 'KALPESH YADAV',
+        email: 'kalpeshyadav@university.edu',
+        password: 'kalpesh@123', // ⚠️ Plain text for testing only!
+        role: 'DEPARMENT_ADMIN',
+        department: 'Electronics and Communication',
+        departmentCode: 'ECE',
+        postingScope: 'INSTITUTE',
+        canPostInstitute: true,
+        requiresApproval: false
+    },
+    {
+        userId: 'ADMIN-001',
+        name: 'System Administrator',
+        email: 'admin@university.edu',
+        password: 'admin123',
+        role: 'admin',
+        department: 'Administration',
+        departmentCode: 'ADMIN',
+        postingScope: 'institute',
+        canPostInstitute: true,
+        requiresApproval: false
+    }
+];

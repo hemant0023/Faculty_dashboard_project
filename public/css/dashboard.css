@@ -1,0 +1,40 @@
+/* ===== DASHBOARD PAGE ONLY ===== */
+
+.dashboard_grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 15px;
+}
+
+.dashboard_box {
+    background-color: #f9fafb;
+    border: 1px solid #dddddd;
+    padding: 10px;
+    font-size: 14px;
+}
+
+.dashboard_table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.dashboard_table th,
+.dashboard_table td {
+    padding: 8px;
+    border: 1px solid #dddddd;
+    font-size: 14px;
+}
+
+.dashboard_table th {
+    background-color: #e8f0ff;
+}
+
+.dashboard_online {
+    color: green;
+    font-weight: bold;
+}
+
+.dashboard_offline {
+    color: red;
+    font-weight: bold;
+}

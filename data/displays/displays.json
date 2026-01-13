@@ -1,0 +1,98 @@
+[
+  {
+    "displayId": "ECE-MAIN-001",
+    "displayName": "ECE Main Display",
+    "displayCode": "ece-main",
+    "department": "Electronics and Communication",
+    "departmentCode": "ECE",
+    "location": "ECE Department - Main Entrance",
+    "displayType": "department",
+    "ipAddress": "192.168.1.101",
+    "macAddress": "00:1B:44:11:3A:B7",
+    "status": "active",
+    "orientation": "landscape",
+    "resolution": "1920x1080",
+    "lastActive": "2026-01-12T22:22:32.072Z",
+    "config": {
+      "autoRefresh": 30,
+      "showNav": true,
+      "showRightSidebar": true,
+      "temperature": 22,
+      "humidity": 45,
+      "hodName": "Dr. Rajesh Kumar"
+    },
+    "createdAt": "2026-01-12T21:07:02.534Z"
+  },
+  {
+    "displayId": "ECE-LAB-001",
+    "displayName": "ECE Lab Display",
+    "displayCode": "ece-lab",
+    "department": "Electronics and Communication",
+    "departmentCode": "ECE",
+    "location": "ECE Department - Lab Area",
+    "displayType": "department",
+    "ipAddress": "192.168.1.102",
+    "macAddress": "00:1B:44:11:3A:B8",
+    "status": "active",
+    "orientation": "landscape",
+    "resolution": "1920x1080",
+    "lastActive": "2026-01-12T21:07:02.534Z",
+    "config": {
+      "autoRefresh": 30,
+      "showNav": true,
+      "showRightSidebar": true,
+      "temperature": 23,
+      "humidity": 46,
+      "hodName": "Dr. Rajesh Kumar"
+    },
+    "createdAt": "2026-01-12T21:07:02.534Z"
+  },
+  {
+    "displayId": "ECE-SEM-001",
+    "displayName": "ECE Seminar Display",
+    "displayCode": "ece-seminar",
+    "department": "Electronics and Communication",
+    "departmentCode": "ECE",
+    "location": "ECE Department - Seminar Hall",
+    "displayType": "department",
+    "ipAddress": "192.168.1.103",
+    "macAddress": "00:1B:44:11:3A:B9",
+    "status": "active",
+    "orientation": "landscape",
+    "resolution": "1920x1080",
+    "lastActive": "2026-01-12T21:07:02.534Z",
+    "config": {
+      "autoRefresh": 30,
+      "showNav": true,
+      "showRightSidebar": true,
+      "temperature": 22,
+      "humidity": 45,
+      "hodName": "Dr. Rajesh Kumar"
+    },
+    "createdAt": "2026-01-12T21:07:02.534Z"
+  },
+  {
+    "displayId": "ECE-LIB-001",
+    "displayName": "ECE Library Display",
+    "displayCode": "ece-library",
+    "department": "Electronics and Communication",
+    "departmentCode": "ECE",
+    "location": "ECE Department - Library",
+    "displayType": "department",
+    "ipAddress": "192.168.1.104",
+    "macAddress": "00:1B:44:11:3A:BA",
+    "status": "active",
+    "orientation": "landscape",
+    "resolution": "1920x1080",
+    "lastActive": "2026-01-12T21:07:02.534Z",
+    "config": {
+      "autoRefresh": 30,
+      "showNav": true,
+      "showRightSidebar": true,
+      "temperature": 22,
+      "humidity": 44,
+      "hodName": "Dr. Rajesh Kumar"
+    },
+    "createdAt": "2026-01-12T21:07:02.534Z"
+  }
+]

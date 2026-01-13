@@ -1,0 +1,40 @@
+[
+  {
+    "submissionId": "INF-20260113_023905",
+    "userId": "FAC-1011",
+    "userName": "HEMANT HARLALKA",
+    "department": "Electronics and Communication",
+    "departmentCode": "ECE",
+    "title": "HOMME AUTOMATION ",
+    "description": "",
+    "category": "workshop",
+    "contentType": "image",
+    "fileName": "WiFi-Controlled-Home-Automation-using-ESP8266-and-blynk-app-1210x642.jpg",
+    "filePath": "uploads/images/FAC-1011_20260113_023905_WiFi-Controlled-Home-Automation-using-ESP8266-and-blynk-app-1210x642.jpg",
+    "fileUrl": "/uploads/images/FAC-1011_20260113_023905_WiFi-Controlled-Home-Automation-using-ESP8266-and-blynk-app-1210x642.jpg",
+    "fileSize": "0.14 MB",
+    "orientation": "landscape",
+    "withSound": false,
+    "startDate": "2026-01-12",
+    "startTime": "02:37",
+    "endDate": "2026-01-19",
+    "endTime": "02:37",
+    "autoRemove": true,
+    "waitTime": 3,
+    "repeatMode": "once",
+    "priority": "important",
+    "importantNote": false,
+    "displayScope": "department",
+    "selectedDisplays": [
+      "ece-main",
+      "ece-lab",
+      "ece-seminar",
+      "ece-library"
+    ],
+    "approvalStatus": "approved",
+    "displayCount": 0,
+    "viewCount": 0,
+    "createdAt": "2026-01-12T21:09:05.454Z",
+    "lastUpdated": "2026-01-12T21:09:05.454Z"
+  }
+]

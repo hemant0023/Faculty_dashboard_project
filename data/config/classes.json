@@ -1,35 +1,69 @@
 [
   { 
-    "id": "CLASS-20260116_005909-NL2V",
+
+    "id":           "CLASS-20260116_005909-NL2V",
     "departmentId": "DEPT-20260119_013352-EUSW",
-    "classId": "ECE-301",
+    "department": "Electronics and Communication Engineering",
+    "departmentCode": "ECE",
+    "classId":      "ECE-1A_101",
     "semester": 1,
     "section": "A",
+    "subject_List":"",
+    "faculty_List":"",
+    "routine_id":"",
     "totalStudents": 60,
-    "coordinator": "FAC-1012",
-    "room": "101-A",
+    "coordinator": "USER-20260119_021658-OBL6",
+    "room": "301",
     "type": "regular",
     "rating": 4.2,
     "performance": {
-      "attendance": 97,
-      "avgMarks": 85
+      "attendance": 46,
+      "avgMarks":   85
     },
     "createdAt": "2026-01-15T19:29:09.532Z"
+  },
+
+{
+    "id": "CLASS-20260119_023804-2AXQ",
+    "classId": "ECE-1B_102",
+    "departmentId": "DEPT-20260119_013352-EUSW",
+     "department": "Electronics and Communication Engineering",
+    "departmentCode": "ECE",
+     "subject_List":"",
+       "routine_id":"",
+    "semester": "1",
+    "section": "B",
+    "totalStudents": 64,
+    "coordinator": "USER-20260119_021658-OBL6",
+    "room": "309",
+    "type": "regular",
+     "rating": 4,
+    "performance": {
+      "attendance": 57,
+      "avgMarks": 75
+    },
+    "createdAt": "2026-01-18T21:08:04.347Z",
+    "createdBy": "ADMIN-20260119_011459-TV5C"
   },
 
   {
     "id": "CLASS-20260116_005909-6CFM",
    "departmentId": "DEPT-20260119_013352-EUSW",
-    "classId": "ECE-302",
+    "department": "Electronics and Communication Engineering",
+    "departmentCode": "ECE",
+    "classId": "ECE-2A_103",
+    "subject_List":"",
+    "faculty_List":"",
+      "routine_id":"",
     "semester": 2,
     "section": "A",
-    "totalStudents": 60,
-    "coordinator": "FAC-1012",
-    "room": "202-A",
+    "totalStudents": 52,
+    "coordinator": "USER-20260119_021658-OBL6",
+    "room": "302",
     "type": "regular",
     "rating": 4.2,
     "performance": {
-      "attendance": 96,
+      "attendance": 32,
       "avgMarks": 85
     },
     "createdAt": "2026-01-15T19:29:09.532Z"
@@ -38,16 +72,21 @@
   {
     "id": "CLASS-20260116_005909-5FRY",
     "departmentId": "DEPT-20260119_013352-EUSW",
-    "classId": "ECE-303",
+     "department": "Electronics and Communication Engineering",
+    "departmentCode": "ECE",
+    "classId": "ECE-3A_104",
+     "subject_List":"",
+     "faculty_List":"",
+     "routine_id":"",
     "semester": 3,
     "section": "A",
-    "totalStudents": 60,
-    "coordinator": "FAC-1012",
-    "room": "303-A",
+    "totalStudents": 61,
+    "coordinator": "USER-20260119_021658-OBL6",
+    "room": "303",
     "type": "regular",
     "rating": 4.2,
     "performance": {
-      "attendance": 95,
+      "attendance": 60,
       "avgMarks": 80
     },
     "createdAt": "2026-01-15T19:29:09.532Z"
@@ -55,16 +94,21 @@
   {
     "id": "CLASS-20260116_005909-Y5JJ",
     "departmentId": "DEPT-20260119_013352-EUSW",
-    "classId": "ECE-304",
+     "department": "Electronics and Communication Engineering",
+    "departmentCode": "ECE",
+    "classId": "ECE-4A_105",
+     "subject_List":"",
+     "faculty_List":"",
+     "routine_id":"",
     "semester": 4,
     "section": "A",
-    "totalStudents": 60,
-    "coordinator": "FAC-1012",
-    "room": "404-A",
+    "totalStudents": 72,
+    "coordinator": "USER-20260119_021658-OBL6",
+    "room": "304",
     "type": "regular",
     "rating": 4.2,
     "performance": {
-      "attendance": 91,
+      "attendance": 61,
       "avgMarks": 88
     },
     "createdAt": "2026-01-15T19:29:09.532Z"
@@ -72,16 +116,21 @@
   {
     "id": "CLASS-20260116_005909-UK3A",
     "departmentId": "DEPT-20260119_013352-EUSW",
-    "classId": "ECE-305",
+    "department": "Electronics and Communication Engineering",
+    "departmentCode": "ECE",
+    "classId": "ECE-5A_106",
+    "subject_List":"",
+    "faculty_List":"",
+     "routine_id":"",
     "semester": 5,
     "section": "A",
-    "totalStudents": 60,
-    "coordinator": "FAC-1012",
-    "room": "505-A",
+    "totalStudents": 78,
+    "coordinator": "USER-20260119_021658-OBL6",
+    "room": "305",
     "type": "regular",
     "rating": 4.2,
     "performance": {
-      "attendance": 95,
+      "attendance": 76,
       "avgMarks": 84
     },
     "createdAt": "2026-01-15T19:29:09.532Z"
@@ -89,33 +138,43 @@
   {
     "id":           "CLASS-20260116_005909-1635",
     "departmentId": "DEPT-20260119_013352-EUSW",
-    "classId": "ECE-306",
+    "department": "Electronics and Communication Engineering",
+    "departmentCode": "ECE",
+    "classId": "ECE-6A_107",
+    "subject_List":"",
+    "faculty_List":"",
+     "routine_id":"",
     "semester": 6,
     "section": "A",
-    "totalStudents": 60,
-    "coordinator": "FAC-1012",
-    "room": "606-A",
+    "totalStudents": 40,
+    "coordinator": "USER-20260119_021658-OBL6",
+    "room": "306",
     "type": "regular",
     "rating": 4.2,
     "performance": {
-      "attendance": 97,
+      "attendance": 27,
       "avgMarks": 75
     },
     "createdAt": "2026-01-15T19:29:09.532Z"
   },
   {
     "id": "CLASS-20260116_005909-T82M",
-     "departmentId": "DEPT-20260119_013352-EUSW",
-    "classId": "ECE-307",
+    "departmentId": "DEPT-20260119_013352-EUSW",
+    "department": "Electronics and Communication Engineering",
+    "departmentCode": "ECE",
+    "classId": "ECE-7A_108",
+    "subject_List":"",
+    "faculty_List":"",
+     "routine_id":"",
     "semester": 7,
     "section": "A",
-    "totalStudents": 60,
-    "coordinator": "FAC-1012",
-    "room": "707-A",
+    "totalStudents": 50,
+    "coordinator": "USER-20260119_021658-OBL6",
+    "room": "307",
     "type": "regular",
     "rating": 4.2,
     "performance": {
-      "attendance": 91,
+      "attendance": 41,
       "avgMarks": 83
     },
 
@@ -123,39 +182,26 @@
   },
   {
     "id": "CLASS-20260116_005909-870G",
-     "departmentId": "DEPT-20260119_013352-EUSW",
-    "classId": "ECE-308",
+    "departmentId": "DEPT-20260119_013352-EUSW",
+    "department": "Electronics and Communication Engineering",
+    "departmentCode": "ECE",
+    "classId": "ECE-8A_109",
+    "subject_List":"",
+    "faculty_List":"",
+     "routine_id":"",
     "semester": 8,
     "section": "A",
-    "totalStudents": 60,
-    "coordinator": "FAC-1012",
-    "room": "808-A",
+    "totalStudents": 67,
+    "coordinator": "USER-20260119_021658-OBL6",
+    "room": "308",
     "type": "regular",
     "rating": 4.2,
     "performance": {
-      "attendance": 91,
+      "attendance": 61,
       "avgMarks": 80
     },
     "createdAt": "2026-01-15T19:29:09.532Z"
-  },
-  
-  {
-    "id": "CLASS-20260119_023804-2AXQ",
-    "classId": "ECE-309",
-    "rating": 4,
-    "performance": {
-      "attendance": 90,
-      "avgMarks": 75
-    },
-
-    "departmentId": "DEPT-20260119_013352-EUSW",
-    "semester": "1",
-    "section": "A",
-    "totalStudents": "100",
-    "coordinator": "USER-20260119_021658-OBL6",
-    "room": "100",
-    "type": "regular",
-    "createdAt": "2026-01-18T21:08:04.347Z",
-    "createdBy": "ADMIN-20260119_011459-TV5C"
   }
+  
+  
 ]

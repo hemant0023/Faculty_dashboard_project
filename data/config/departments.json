@@ -11,9 +11,9 @@
     "totalFaculty": 24,
     "rating": 4.5,
     "performance": {
-      "attendance": 92,
+      "attendance": 323,
       "passPercentage": 88,
-      "placementRate": 85,
+      "placementRate":  85,
       "researchPapers": 42
     },
     "certificates": [

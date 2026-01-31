@@ -1,0 +1,45 @@
+[Unit]
+Description=Smart Dashboard Server
+Documentation=file:///home/hemant/SMART_DASHBOARD_PROJECT/README.md
+After=network.target
+Wants=network.target
+
+# Optional: Start after display service
+# After=live_dashboard.service
+
+[Service]
+# Service Type
+Type=simple
+
+# User and Group
+User=hemant
+Group=hemant
+
+# Working Directory
+WorkingDirectory=/home/hemant/SMART_DASHBOARD_PROJECT
+
+# Environment Variables
+Environment=NODE_ENV=production
+Environment=PORT=5000
+
+# Main Command
+ExecStart=/usr/bin/node /home/hemant/SMART_DASHBOARD_PROJECT/server.js
+
+# Pre-start checks
+ExecStartPre=/bin/sleep 2
+ExecStartPre=/bin/bash -c 'test -f /home/hemant/SMART_DASHBOARD_PROJECT/server.js || exit 1'
+
+# Graceful Shutdown
+ExecStop=/bin/kill -SIGTERM $MAINPID
+TimeoutStopSec=10
+KillMode=mixed
+KillSignal=SIGTERM
+
+# Restart Configuration (Error Handling)
+Restart=always
+RestartSec=5
+StartLimitInterval=200
+StartLimitBurst=10
+
+# Timeout Settings
+TimeoutStartSec=30

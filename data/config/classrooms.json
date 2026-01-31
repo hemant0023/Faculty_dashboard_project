@@ -3,6 +3,43 @@
   {
     "id": "ROOM-20260119_013352-ELN2",
     "classroomId": "ECE-301",
+    "CLASSROOM_NO" : 301,
+    "department": "Electronics and Communication Engineering",
+    "departmentCode": "ECE",
+    "departmentId": "DEPT-20260119_013352-EUSW",
+    "MAX_CAPCITY" :100,
+     "LOCATION" :"2TH FLOOR",
+     "ATTENDANCE_DEVICE_IP":"192.168.0.101",
+     "ATTENDANCE_DEVICE_PORT": 80,
+     "ATTENDANCE_DEVICE_SERIAL_NO":"",
+     "ATTENDANCE_DEVICEMAC_ADDR":"",
+     "ATTENDANCE_DEVICE_MAC_ADDR":"",
+     "ATTENDANCE_DEVICE_ENABLED":  true,
+      "ATTENDANCE_DEVICE_STATUS": "online",
+      "ATTENDANCE_DEVICE_POLLING": {
+        "interval": 5000,        
+        "timeout": 8000,          
+        "retryAttempts": 3,       
+        "retryDelay": 2000        
+    },
+
+    "cache": {
+        "enabled": true,
+        "ttl": 30000,            
+        "maxAge": 60000          
+    },
+  
+    "display": {
+        "showInactiveClassrooms": false,  
+        "maxSessionsPerDay": 10,
+        "temperatureUnit": "celsius",     
+        "humidityWarningThreshold": 70,   
+        "temperatureWarningMin":    18,      
+        "temperatureWarningMax":    34      
+    },
+    
+  
+    "classId": "ECE-301-A",
     "semester": 1,
     "section": "A",
     "subject": "Subject_1",
@@ -13,12 +50,48 @@
     "attendancePercentage": 97,
     "temperature": 22,
     "humidity": 45,
+
     "lastUpdated": "2026-01-18T20:03:52.954Z"
   },
 
   {
     "id": "ROOM-20260119_013352-YZ3W",
     "classroomId": "ECE-302",
+      "department": "Electronics and Communication Engineering",
+    "departmentCode": "ECE",
+    "departmentId": "DEPT-20260119_013352-EUSW",
+    "MAX_CAPCITY" :100,
+     "LOCATION" :"2TH FLOOR",
+     "ATTENDANCE_DEVICE_IP":"192.168.0.102",
+     "ATTENDANCE_DEVICE_PORT": 80,
+     "ATTENDANCE_DEVICE_SERIAL_NO":"",
+     "ATTENDANCE_DEVICEMAC_ADDR":"",
+     "ATTENDANCE_DEVICE_MAC_ADDR":"",
+     "ATTENDANCE_DEVICE_ENABLED":  false,
+      "ATTENDANCE_DEVICE_POLLING": {
+        "interval": 10000,        
+        "timeout": 5000,          
+        "retryAttempts": 3,       
+        "retryDelay": 2000        
+    },
+
+    "cache": {
+        "enabled": true,
+        "ttl": 30000,            
+        "maxAge": 60000          
+    },
+  
+    "display": {
+        "showInactiveClassrooms": false,  
+        "maxSessionsPerDay": 10,
+        "temperatureUnit": "celsius",     
+        "humidityWarningThreshold": 70,   
+        "temperatureWarningMin": 18,      
+        "temperatureWarningMax": 30      
+    },
+    
+  
+    "classId": "ECE-302-A",
     "semester": 2,
     "section": "A",
     "subject": "Subject_2",
@@ -34,6 +107,42 @@
   {
     "id": "ROOM-20260119_013352-IYTP",
     "classroomId": "ECE-303",
+     "department": "Electronics and Communication Engineering",
+    "departmentCode": "ECE",
+    "departmentId": "DEPT-20260119_013352-EUSW",
+    "MAX_CAPCITY" :100,
+     "LOCATION" :"2TH FLOOR",
+     "ATTENDANCE_DEVICE_IP":"192.168.0.102",
+     "ATTENDANCE_DEVICE_PORT": 80,
+     "ATTENDANCE_DEVICE_SERIAL_NO":"",
+     "ATTENDANCE_DEVICEMAC_ADDR":"",
+     "ATTENDANCE_DEVICE_MAC_ADDR":"",
+     "ATTENDANCE_DEVICE_ENABLED":  false,
+      "ATTENDANCE_DEVICE_POLLING": {
+        "interval": 10000,        
+        "timeout": 5000,          
+        "retryAttempts": 3,       
+        "retryDelay": 2000        
+    },
+
+    "cache": {
+        "enabled": true,
+        "ttl": 30000,            
+        "maxAge": 60000          
+    },
+  
+    "display": {
+        "showInactiveClassrooms": false,  
+        "maxSessionsPerDay": 10,
+        "temperatureUnit": "celsius",     
+        "humidityWarningThreshold": 70,   
+        "temperatureWarningMin": 18,      
+        "temperatureWarningMax": 30      
+    },
+    
+  
+    "classId": "ECE-303-A",
+
     "semester": 3,
     "section": "A",
     "subject": "Subject_3",
@@ -49,6 +158,41 @@
   {
     "id": "ROOM-20260119_013352-U4TT",
     "classroomId": "ECE-304",
+     "department": "Electronics and Communication Engineering",
+    "departmentCode": "ECE",
+    "departmentId": "DEPT-20260119_013352-EUSW",
+    "MAX_CAPCITY" :100,
+     "LOCATION" :"2TH FLOOR",
+     "ATTENDANCE_DEVICE_IP":"192.168.0.102",
+     "ATTENDANCE_DEVICE_PORT": 80,
+     "ATTENDANCE_DEVICE_SERIAL_NO":"",
+     "ATTENDANCE_DEVICEMAC_ADDR":"",
+     "ATTENDANCE_DEVICE_MAC_ADDR":"",
+     "ATTENDANCE_DEVICE_ENABLED":  false,
+      "ATTENDANCE_DEVICE_POLLING": {
+        "interval": 10000,        
+        "timeout": 5000,          
+        "retryAttempts": 3,       
+        "retryDelay": 2000        
+    },
+
+    "cache": {
+        "enabled": true,
+        "ttl": 30000,            
+        "maxAge": 60000          
+    },
+  
+    "display": {
+        "showInactiveClassrooms": false,  
+        "maxSessionsPerDay": 10,
+        "temperatureUnit": "celsius",     
+        "humidityWarningThreshold": 70,   
+        "temperatureWarningMin": 18,      
+        "temperatureWarningMax": 30      
+    },
+    
+  
+    "classId": "ECE-304-A",
     "semester": 4,
     "section": "A",
     "subject": "Subject_4",
@@ -66,6 +210,41 @@
 
     "id": "ROOM-20260119_013352-C4ST",
     "classroomId": "ECE-305",
+     "department": "Electronics and Communication Engineering",
+    "departmentCode": "ECE",
+    "departmentId": "DEPT-20260119_013352-EUSW",
+    "MAX_CAPCITY" :100,
+     "LOCATION" :"2TH FLOOR",
+     "ATTENDANCE_DEVICE_IP":"192.168.0.102",
+     "ATTENDANCE_DEVICE_PORT": 80,
+     "ATTENDANCE_DEVICE_SERIAL_NO":"",
+     "ATTENDANCE_DEVICEMAC_ADDR":"",
+     "ATTENDANCE_DEVICE_MAC_ADDR":"",
+     "ATTENDANCE_DEVICE_ENABLED":  false,
+      "ATTENDANCE_DEVICE_POLLING": {
+        "interval": 10000,        
+        "timeout": 5000,          
+        "retryAttempts": 3,       
+        "retryDelay": 2000        
+    },
+
+    "cache": {
+        "enabled": true,
+        "ttl": 30000,            
+        "maxAge": 60000          
+    },
+  
+    "display": {
+        "showInactiveClassrooms": false,  
+        "maxSessionsPerDay": 10,
+        "temperatureUnit": "celsius",     
+        "humidityWarningThreshold": 70,   
+        "temperatureWarningMin": 18,      
+        "temperatureWarningMax": 30      
+    },
+    
+  
+    "classId": "ECE-305-A",
     "semester": 5,
     "section": "A",
     "subject": "Subject_5",
@@ -96,6 +275,43 @@
   {
     "id": "ROOM-20260119_013352-RJXJ",
     "classroomId": "ECE-307",
+
+     "department": "Electronics and Communication Engineering",
+    "departmentCode": "ECE",
+    "departmentId": "DEPT-20260119_013352-EUSW",
+    "MAX_CAPCITY" :100,
+     "LOCATION" :"2TH FLOOR",
+     "ATTENDANCE_DEVICE_IP":"192.168.0.102",
+     "ATTENDANCE_DEVICE_PORT": 80,
+     "ATTENDANCE_DEVICE_SERIAL_NO":"",
+     "ATTENDANCE_DEVICEMAC_ADDR":"",
+     "ATTENDANCE_DEVICE_MAC_ADDR":"",
+     "ATTENDANCE_DEVICE_ENABLED":  false,
+      "ATTENDANCE_DEVICE_POLLING": {
+        "interval": 10000,        
+        "timeout": 5000,          
+        "retryAttempts": 3,       
+        "retryDelay": 2000        
+    },
+
+    "cache": {
+        "enabled": true,
+        "ttl": 30000,            
+        "maxAge": 60000          
+    },
+  
+    "display": {
+        "showInactiveClassrooms": false,  
+        "maxSessionsPerDay": 10,
+        "temperatureUnit": "celsius",     
+        "humidityWarningThreshold": 70,   
+        "temperatureWarningMin": 18,      
+        "temperatureWarningMax": 30      
+    },
+    
+  
+    "classId": "ECE-306-A",
+
     "semester": 7,
     "section": "A",
     "subject": "Subject_7",
@@ -111,6 +327,41 @@
   {
     "id": "ROOM-20260119_013352-C3WZ",
     "classroomId": "ECE-308",
+     "department": "Electronics and Communication Engineering",
+    "departmentCode": "ECE",
+    "departmentId": "DEPT-20260119_013352-EUSW",
+    "MAX_CAPCITY" :100,
+     "LOCATION" :"2TH FLOOR",
+     "ATTENDANCE_DEVICE_IP":"192.168.0.102",
+     "ATTENDANCE_DEVICE_PORT": 80,
+     "ATTENDANCE_DEVICE_SERIAL_NO":"",
+     "ATTENDANCE_DEVICEMAC_ADDR":"",
+     "ATTENDANCE_DEVICE_MAC_ADDR":"",
+     "ATTENDANCE_DEVICE_ENABLED":  false,
+      "ATTENDANCE_DEVICE_POLLING": {
+        "interval": 10000,        
+        "timeout": 5000,          
+        "retryAttempts": 3,       
+        "retryDelay": 2000        
+    },
+
+    "cache": {
+        "enabled": true,
+        "ttl": 30000,            
+        "maxAge": 60000          
+    },
+  
+    "display": {
+        "showInactiveClassrooms": false,  
+        "maxSessionsPerDay": 10,
+        "temperatureUnit": "celsius",     
+        "humidityWarningThreshold": 70,   
+        "temperatureWarningMin": 18,      
+        "temperatureWarningMax": 30      
+    },
+    
+  
+    "classId": "ECE-308-A",
     "semester": 8,
     "section": "A",
     "subject": "Subject_8",
@@ -122,5 +373,58 @@
     "temperature": 24,
     "humidity": 45,
     "lastUpdated": "2026-01-18T20:03:52.954Z"
+  },
+
+ {
+    "id": "ROOM-20260119_013353-C3WZ",
+    "classroomId": "ECE-309",
+     "department": "Electronics and Communication Engineering",
+    "departmentCode": "ECE",
+    "departmentId": "DEPT-20260119_013352-EUSW",
+    "MAX_CAPCITY" :100,
+     "LOCATION" :"2TH FLOOR",
+     "ATTENDANCE_DEVICE_IP":"192.168.0.102",
+     "ATTENDANCE_DEVICE_PORT": 80,
+     "ATTENDANCE_DEVICE_SERIAL_NO":"",
+     "ATTENDANCE_DEVICEMAC_ADDR":"",
+     "ATTENDANCE_DEVICE_MAC_ADDR":"",
+     "ATTENDANCE_DEVICE_ENABLED":  false,
+      "ATTENDANCE_DEVICE_POLLING": {
+        "interval": 10000,        
+        "timeout": 5000,          
+        "retryAttempts": 3,       
+        "retryDelay": 2000        
+    },
+
+    "cache": {
+        "enabled": true,
+        "ttl": 30000,            
+        "maxAge": 60000          
+    },
+  
+    "display": {
+        "showInactiveClassrooms": false,  
+        "maxSessionsPerDay": 10,
+        "temperatureUnit": "celsius",     
+        "humidityWarningThreshold": 70,   
+        "temperatureWarningMin": 18,      
+        "temperatureWarningMax": 30      
+    },
+    
+  
+    "classId": "ECE-309-A",
+    "semester": 8,
+    "section": "A",
+    "subject": "Subject_9",
+    "faculty": "FACULTY_09",
+    "totalStudents": 62,
+    "presentStudents": 60,
+    "absentStudents": 1,
+    "attendancePercentage": 86,
+    "temperature": 24,
+    "humidity": 45,
+    "lastUpdated": "2026-01-18T20:03:52.954Z"
   }
+
+
 ]

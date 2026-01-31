@@ -1,0 +1,62 @@
+[
+  {
+    "timestamp": "2026-01-15T19:30:46.142Z",
+    "action": "LOGIN_SUCCESS",
+    "details": {
+      "userId": "ADMIN-001",
+      "name": "System Administrator"
+    }
+  },
+  {
+    "timestamp": "2026-01-15T19:31:47.018Z",
+    "action": "LOGIN_SUCCESS",
+    "details": {
+      "userId": "FAC-1011",
+      "name": "HEMANT HARLALKA"
+    }
+  },
+  {
+    "timestamp": "2026-01-15T20:00:36.076Z",
+    "action": "LOGIN_SUCCESS",
+    "details": {
+      "userId": "FAC-1011",
+      "name": "HEMANT HARLALKA"
+    }
+  },
+  {
+    "timestamp": "2026-01-15T20:01:50.831Z",
+    "action": "SUBMISSION_CREATED",
+    "details": {
+      "submissionId": "SUB-20260116_013150-MYEC",
+      "userId": "FAC-1011",
+      "title": "WORKSHOP",
+      "displays": 4
+    }
+  },
+  {
+    "timestamp": "2026-01-15T21:57:43.334Z",
+    "action": "LOGIN_SUCCESS",
+    "details": {
+      "userId": "FAC-1011",
+      "name": "HEMANT HARLALKA"
+    }
+  },
+  {
+    "timestamp": "2026-01-15T22:10:32.510Z",
+    "action": "SUBMISSION_CREATED",
+    "details": {
+      "submissionId": "SUB-20260116_034032-630B",
+      "userId": "FAC-1011",
+      "title": "video",
+      "displays": 4
+    }
+  },
+  {
+    "timestamp": "2026-01-16T12:55:35.033Z",
+    "action": "LOGIN_SUCCESS",
+    "details": {
+      "userId": "FAC-1011",
+      "name": "HEMANT HARLALKA"
+    }
+  }
+]

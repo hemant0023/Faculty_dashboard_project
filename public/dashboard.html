@@ -1,124 +1,1199 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>DASHBOARD | SMART NOTICE BOARD</title>
-<link rel="stylesheet" href="css/layout.css">
-<link rel="stylesheet" href="css/dashboard.css">
-</head>
+<style>
+/* ============================================
+   COMPLETE DASHBOARD CSS - EMBEDDED
+   With Hover Tooltips & Interactive Elements
+   ============================================ */
 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+}
+
+/* ===== TOP HEADER ===== */
+.top-header {
+    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+    color: white;
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+
+.top-header h1 {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 8px 15px;
+    border-radius: 8px;
+}
+
+.user-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.user-name {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.user-role {
+    font-size: 11px;
+    opacity: 0.8;
+}
+
+/* ===== LAYOUT ===== */
+.layout {
+    display: flex;
+    max-width: 1920px;
+    margin: 0 auto;
+}
+
+/* ===== SIDEBAR ===== */
+.sidebar {
+    width: 260px;
+    background: linear-gradient(180deg, #1e293b 0%, #0f172a 100%);
+    padding: 25px 0;
+    box-shadow: 4px 0 10px rgba(0, 0, 0, 0.3);
+    min-height: calc(100vh - 70px);
+}
+
+.sidebar a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #cbd5e1;
+    text-decoration: none;
+    padding: 16px 28px;
+    font-size: 14px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border-left: 4px solid transparent;
+}
+
+.sidebar a:hover {
+    background-color: rgba(59, 130, 246, 0.1);
+    color: white;
+    border-left-color: #3b82f6;
+    padding-left: 32px;
+}
+
+.sidebar a.active {
+    background: linear-gradient(90deg, rgba(59, 130, 246, 0.2) 0%, transparent 100%);
+    color: white;
+    border-left-color: #60a5fa;
+}
+
+.sidebar-icon {
+    font-size: 18px;
+    width: 24px;
+}
+
+/* ===== PAGE CONTENT ===== */
+.page-content {
+    flex: 1;
+    padding: 20px;
+}
+
+/* Welcome Section */
+.welcome-section {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 30px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.welcome-section h2 {
+    font-size: 28px;
+    margin-bottom: 8px;
+}
+
+.welcome-section p {
+    font-size: 16px;
+    opacity: 0.9;
+}
+
+/* Hierarchy Breadcrumb */
+.hierarchy-breadcrumb {
+    background: white;
+    padding: 15px 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    border-left: 4px solid #3b82f6;
+    font-size: 14px;
+    color: #64748b;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+/* Section */
+.section {
+    background: white;
+    border-radius: 12px;
+    padding: 25px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.section-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: #1e293b;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+/* ===== STATISTICS GRID ===== */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.stat-card {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s, box-shadow 0.3s;
+    cursor: pointer;
+    position: relative;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+.stat-card-blue { border-left: 4px solid #3b82f6; }
+.stat-card-green { border-left: 4px solid #10b981; }
+.stat-card-orange { border-left: 4px solid #f59e0b; }
+.stat-card-purple { border-left: 4px solid #8b5cf6; }
+
+.stat-icon {
+    font-size: 36px;
+}
+
+.stat-content {
+    flex: 1;
+}
+
+.stat-value {
+    font-size: 32px;
+    font-weight: 700;
+    color: #1e293b;
+    line-height: 1;
+    margin-bottom: 5px;
+}
+
+.stat-label {
+    font-size: 14px;
+    color: #64748b;
+    font-weight: 500;
+}
+
+/* ===== HOVER TOOLTIP ===== */
+.hover-tooltip {
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-10px);
+    background: #1e293b;
+    color: white;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s, transform 0.3s;
+    white-space: nowrap;
+    font-size: 13px;
+    min-width: 250px;
+}
+
+.hover-tooltip::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 8px solid transparent;
+    border-top-color: #1e293b;
+}
+
+.stat-card:hover .hover-tooltip {
+    opacity: 1;
+    transform: translateX(-50%) translateY(-5px);
+}
+
+.tooltip-title {
+    font-weight: 700;
+    margin-bottom: 8px;
+    font-size: 14px;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+    padding-bottom: 8px;
+}
+
+.tooltip-item {
+    display: flex;
+    justify-content: space-between;
+    margin: 5px 0;
+    padding: 5px 0;
+}
+
+.tooltip-label {
+    color: #94a3b8;
+}
+
+.tooltip-value {
+    font-weight: 600;
+    color: white;
+}
+
+/* ===== INFO GRID WITH HOVER ===== */
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+}
+
+.info-card {
+    background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+    border-radius: 8px;
+    padding: 15px;
+    border-left: 3px solid #3b82f6;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.info-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+.info-label {
+    font-size: 12px;
+    color: #64748b;
+    font-weight: 600;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+}
+
+.info-value {
+    font-size: 18px;
+    color: #1e293b;
+    font-weight: 600;
+}
+
+/* Hover Details for Info Cards */
+.info-card-details {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: #1e293b;
+    color: white;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    z-index: 100;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s, transform 0.3s;
+    transform: translateY(-10px);
+    margin-top: 5px;
+}
+
+.info-card:hover .info-card-details {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: all;
+}
+
+.detail-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 0;
+    font-size: 12px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.detail-row:last-child {
+    border-bottom: none;
+}
+
+/* ===== METRICS GRID ===== */
+.metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+}
+
+.metric-card {
+    background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+    border-radius: 12px;
+    padding: 20px;
+    border: 2px solid #e2e8f0;
+    transition: transform 0.3s, box-shadow 0.3s;
+    cursor: pointer;
+    position: relative;
+}
+
+.metric-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.metric-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.metric-icon {
+    font-size: 24px;
+}
+
+.metric-title {
+    font-size: 14px;
+    color: #64748b;
+    font-weight: 600;
+}
+
+.metric-value {
+    font-size: 32px;
+    font-weight: 700;
+    color: #1e293b;
+    margin-bottom: 8px;
+}
+
+.metric-trend {
+    font-size: 13px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.metric-up { color: #10b981; }
+.metric-down { color: #ef4444; }
+.metric-stable { color: #64748b; }
+
+/* ===== ENHANCED TABLES WITH HOVER ===== */
+.table-container {
+    overflow-x: auto;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+}
+
+.dashboard-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.dashboard-table thead {
+    background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+}
+
+.dashboard-table th {
+    padding: 12px 15px;
+    text-align: left;
+    font-size: 13px;
+    font-weight: 600;
+    color: #475569;
+    border-bottom: 2px solid #e2e8f0;
+    text-transform: uppercase;
+}
+
+.dashboard-table td {
+    padding: 12px 15px;
+    font-size: 14px;
+    color: #1e293b;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.dashboard-table tbody tr {
+    transition: all 0.3s;
+    position: relative;
+    cursor: pointer;
+}
+
+.dashboard-table tbody tr:hover {
+    background: #f8fafc;
+    transform: scale(1.01);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.table-loading, .table-empty {
+    text-align: center;
+    color: #94a3b8;
+    padding: 40px !important;
+}
+
+/* ===== HOVER NAME CARD ===== */
+.hoverable-name {
+    font-weight: 600;
+    color: #1e293b;
+    position: relative;
+    cursor: help;
+    border-bottom: 2px dotted #3b82f6;
+}
+
+.name-hover-card {
+    position: absolute;
+    bottom: 100%;
+    left: 0;
+    background: white;
+    border: 2px solid #3b82f6;
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    z-index: 1000;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s, transform 0.3s;
+    transform: translateY(-5px);
+    min-width: 300px;
+    margin-bottom: 5px;
+}
+
+.hoverable-name:hover .name-hover-card {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.hover-card-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.hover-card-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.hover-card-name {
+    font-size: 16px;
+    font-weight: 700;
+    color: #1e293b;
+}
+
+.hover-card-role {
+    font-size: 12px;
+    color: #64748b;
+}
+
+.hover-card-detail {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 0;
+    font-size: 13px;
+}
+
+.hover-card-label {
+    color: #64748b;
+}
+
+.hover-card-value {
+    font-weight: 600;
+    color: #1e293b;
+}
+
+/* ===== COUNT BADGES WITH HOVER ===== */
+.count-badge {
+    background: #3b82f6;
+    color: white;
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.3s;
+}
+
+.count-badge:hover {
+    background: #2563eb;
+    transform: scale(1.1);
+}
+
+/* ===== STATUS BADGES ===== */
+.status-badge {
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.status-approved,
+.status-online,
+.status-operational {
+    background: #dcfce7;
+    color: #166534;
+}
+
+.status-pending {
+    background: #fef3c7;
+    color: #92400e;
+}
+
+.status-rejected,
+.status-offline {
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+.status-maintenance {
+    background: #fef3c7;
+    color: #92400e;
+}
+
+/* ===== ACTIVITY LOG ===== */
+.activity-log {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.activity-item {
+    display: flex;
+    gap: 15px;
+    padding: 15px;
+    background: #f8fafc;
+    border-radius: 8px;
+    border-left: 3px solid #3b82f6;
+    transition: transform 0.2s;
+}
+
+.activity-item:hover {
+    transform: translateX(5px);
+    background: #f1f5f9;
+}
+
+.activity-icon {
+    font-size: 24px;
+    flex-shrink: 0;
+}
+
+.activity-content {
+    flex: 1;
+}
+
+.activity-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: #1e293b;
+    margin-bottom: 3px;
+}
+
+.activity-subtitle {
+    font-size: 13px;
+    color: #64748b;
+    margin-bottom: 3px;
+}
+
+.activity-time {
+    font-size: 12px;
+    color: #94a3b8;
+}
+
+/* ===== FOOTER ===== */
+.footer {
+    text-align: center;
+    padding: 20px;
+    color: white;
+    font-size: 13px;
+    margin-top: 30px;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1400px) {
+    .stats-grid, .metrics-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 992px) {
+    .stats-grid, .metrics-grid, .info-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .stats-grid, .metrics-grid, .info-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .layout {
+        flex-direction: column;
+    }
+    
+    .sidebar {
+        width: 100%;
+        min-height: auto;
+    }
+}
+</style>
+</head>
 <body>
 
+<!-- TOP HEADER -->
 <div class="top-header">
-SMART DIGITAL NOTICE BOARD – DASHBOARD
+    <h1>📊 SMART DIGITAL NOTICE BOARD – DASHBOARD</h1>
+    <div class="user-info">
+        <div class="user-avatar" id="userAvatar">SA</div>
+        <div>
+            <div class="user-name" id="userName">LOADING...</div>
+            <div class="user-role" id="userRole">---</div>
+        </div>
+    </div>
 </div>
 
+<!-- MAIN LAYOUT -->
 <div class="layout">
 
-    
-<div class="sidebar">
-    <a href="home.html">
-        <span class="sidebar-icon">🏠</span>
-        HOME
-    </a>
-    <a href="dashboard.html" class="active">
-        <span class="sidebar-icon">📊</span>
-        DASHBOARD
-    </a>
-    <a href="add-information.html">
-        <span class="sidebar-icon">➕</span>
-        ADD INFORMATION
-    </a>
-    <a href="#">
-        <span class="sidebar-icon">📅</span>
-        SCHEDULE MANAGER
-    </a>
-     <a href="device-management.html" >
-        <span>🖥️</span> DISPLAY DEVICES
-    </a>
-    <a href="settings.html">
-        <span class="sidebar-icon">⚙️</span>
-        SETTINGS
-    </a>
-    <a href="#" onclick="logout()">
-        <span class="sidebar-icon">🚪</span>
-        LOGOUT
-    </a>
-</div>
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+        <a href="home.html">
+            <span class="sidebar-icon">🏠</span>
+            HOME
+        </a>
+        <a href="dashboard.html" class="active">
+            <span class="sidebar-icon">📊</span>
+            DASHBOARD
+        </a>
+        <a href="add-information.html">
+            <span class="sidebar-icon">➕</span>
+            ADD INFORMATION
+        </a>
+        <a href="#">
+            <span class="sidebar-icon">📅</span>
+            SCHEDULE MANAGER
+        </a>
+        <a href="device-management.html">
+            <span>🖥️</span> DISPLAY DEVICES
+        </a>
+        <a href="settings.html">
+            <span class="sidebar-icon">⚙️</span>
+            SETTINGS
+        </a>
+        <a href="#" onclick="logout()">
+            <span class="sidebar-icon">🚪</span>
+            LOGOUT
+        </a>
+    </div>
 
-<div class="page-content">
-
-<!-- Alert -->
-
+    <!-- PAGE CONTENT -->
     <div class="page-content">
 
-        <div class="section">
-            <div class="section-title">INSTITUTE INFORMATION</div>
+        <!-- WELCOME SECTION -->
+        <div class="welcome-section">
+            <h2>Welcome Back, <span id="welcomeName">User</span>! 👋</h2>
+            <p id="welcomeSubtext">Here's what's happening in your department today</p>
+        </div>
 
-            <div class="dashboard_grid">
-                <div class="dashboard_box">INSTITUTE: ABC ENGINEERING COLLEGE</div>
-                <div class="dashboard_box">DEPARTMENT: ECE</div>
-                <div class="dashboard_box">ADMIN: DR. R. KUMAR</div>
-                <div class="dashboard_box">TOTAL FACULTY: 18</div>
+        <!-- HIERARCHY BREADCRUMB -->
+        <div class="hierarchy-breadcrumb">
+            <span id="hierarchyPath">Loading hierarchy...</span>
+        </div>
+
+        <!-- STATISTICS CARDS WITH HOVER TOOLTIPS -->
+        <div class="section">
+            <div class="section-title">📊 QUICK STATISTICS</div>
+            <div class="stats-grid">
+                <div class="stat-card stat-card-blue">
+                    <div class="stat-icon">📝</div>
+                    <div class="stat-content">
+                        <div class="stat-value" id="totalSubmissions">0</div>
+                        <div class="stat-label">Total Submissions</div>
+                    </div>
+                    <div class="hover-tooltip">
+                        <div class="tooltip-title">📝 Submission Details</div>
+                        <div class="tooltip-item">
+                            <span class="tooltip-label">This Month:</span>
+                            <span class="tooltip-value" id="tooltip-month">0</span>
+                        </div>
+                        <div class="tooltip-item">
+                            <span class="tooltip-label">This Week:</span>
+                            <span class="tooltip-value" id="tooltip-week">0</span>
+                        </div>
+                        <div class="tooltip-item">
+                            <span class="tooltip-label">Today:</span>
+                            <span class="tooltip-value" id="tooltip-today">0</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="stat-card stat-card-green">
+                    <div class="stat-icon">✅</div>
+                    <div class="stat-content">
+                        <div class="stat-value" id="approvedSubmissions">0</div>
+                        <div class="stat-label">Approved</div>
+                    </div>
+                    <div class="hover-tooltip">
+                        <div class="tooltip-title">✅ Approval Status</div>
+                        <div class="tooltip-item">
+                            <span class="tooltip-label">Active Now:</span>
+                            <span class="tooltip-value" id="tooltip-active">0</span>
+                        </div>
+                        <div class="tooltip-item">
+                            <span class="tooltip-label">Scheduled:</span>
+                            <span class="tooltip-value" id="tooltip-scheduled">0</span>
+                        </div>
+                        <div class="tooltip-item">
+                            <span class="tooltip-label">Completed:</span>
+                            <span class="tooltip-value" id="tooltip-completed">0</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="stat-card stat-card-orange">
+                    <div class="stat-icon">⏳</div>
+                    <div class="stat-content">
+                        <div class="stat-value" id="pendingSubmissions">0</div>
+                        <div class="stat-label">Pending Approval</div>
+                    </div>
+                    <div class="hover-tooltip">
+                        <div class="tooltip-title">⏳ Pending Items</div>
+                        <div class="tooltip-item">
+                            <span class="tooltip-label">Urgent:</span>
+                            <span class="tooltip-value" id="tooltip-urgent">0</span>
+                        </div>
+                        <div class="tooltip-item">
+                            <span class="tooltip-label">Normal:</span>
+                            <span class="tooltip-value" id="tooltip-normal">0</span>
+                        </div>
+                        <div class="tooltip-item">
+                            <span class="tooltip-label">Avg Wait:</span>
+                            <span class="tooltip-value" id="tooltip-avgwait">2 hrs</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="stat-card stat-card-purple">
+                    <div class="stat-icon">👁️</div>
+                    <div class="stat-content">
+                        <div class="stat-value" id="totalViews">0</div>
+                        <div class="stat-label">Total Views</div>
+                    </div>
+                    <div class="hover-tooltip">
+                        <div class="tooltip-title">👁️ View Analytics</div>
+                        <div class="tooltip-item">
+                            <span class="tooltip-label">Avg per Notice:</span>
+                            <span class="tooltip-value" id="tooltip-avgviews">24</span>
+                        </div>
+                        <div class="tooltip-item">
+                            <span class="tooltip-label">Most Viewed:</span>
+                            <span class="tooltip-value" id="tooltip-topview">Exam Schedule</span>
+                        </div>
+                        <div class="tooltip-item">
+                            <span class="tooltip-label">Total Displays:</span>
+                            <span class="tooltip-value" id="tooltip-displays">4</span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
+        <!-- ORGANIZATION INFO WITH HOVER DETAILS -->
         <div class="section">
-            <div class="section-title">LAST UPDATED DATA</div>
-
-            <table class="dashboard_table">
-                <tr>
-                    <th>ROLE</th>
-                    <th>NAME</th>
-                    <th>ID</th>
-                    <th>TYPE</th>
-                    <th>DATE & TIME</th>
-                </tr>
-                <tr>
-                    <td>FACULTY</td>
-                    <td>ANJALI SHARMA</td>
-                    <td>FAC-1023</td>
-                    <td>IMAGE</td>
-                    <td>18-10-2025 10:12 AM</td>
-                </tr>
-                <tr>
-                    <td>HOD</td>
-                    <td>R. KUMAR</td>
-                    <td>HOD-001</td>
-                    <td>VIDEO</td>
-                    <td>18-10-2025 09:30 AM</td>
-                </tr>
-            </table>
+            <div class="section-title">🏛️ ORGANIZATION INFORMATION</div>
+            <div class="info-grid">
+                <div class="info-card">
+                    <div class="info-label">UNIVERSITY</div>
+                    <div class="info-value" id="universityName">---</div>
+                    <div class="info-card-details">
+                        <div class="detail-row">
+                            <span>Established:</span>
+                            <span id="uni-established">1990</span>
+                        </div>
+                        <div class="detail-row">
+                            <span>Type:</span>
+                            <span id="uni-type">Private</span>
+                        </div>
+                        <div class="detail-row">
+                            <span>Chancellor:</span>
+                            <span id="uni-chancellor">Dr. Name</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="info-card">
+                    <div class="info-label">INSTITUTE</div>
+                    <div class="info-value" id="instituteName">---</div>
+                    <div class="info-card-details">
+                        <div class="detail-row">
+                            <span>Dean:</span>
+                            <span id="inst-dean">Dr. Name</span>
+                        </div>
+                        <div class="detail-row">
+                            <span>Principal:</span>
+                            <span id="inst-principal">Dr. Name</span>
+                        </div>
+                        <div class="detail-row">
+                            <span>Departments:</span>
+                            <span id="inst-depts">8</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="info-card">
+                    <div class="info-label">DEPARTMENT</div>
+                    <div class="info-value" id="departmentName">---</div>
+                    <div class="info-card-details">
+                        <div class="detail-row">
+                            <span>Code:</span>
+                            <span id="dept-code">ECE</span>
+                        </div>
+                        <div class="detail-row">
+                            <span>Established:</span>
+                            <span id="dept-established">2005</span>
+                        </div>
+                        <div class="detail-row">
+                            <span>Rating:</span>
+                            <span id="dept-rating">4.5 ⭐</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="info-card">
+                    <div class="info-label">HOD</div>
+                    <div class="info-value" id="hodName">---</div>
+                    <div class="info-card-details">
+                        <div class="detail-row">
+                            <span>Designation:</span>
+                            <span id="hod-designation">Ph.D., M.Tech</span>
+                        </div>
+                        <div class="detail-row">
+                            <span>Experience:</span>
+                            <span id="hod-experience">15 years</span>
+                        </div>
+                        <div class="detail-row">
+                            <span>Email:</span>
+                            <span id="hod-email">hod@email.com</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="info-card">
+                    <div class="info-label">TOTAL FACULTY</div>
+                    <div class="info-value" id="totalFaculty">0</div>
+                    <div class="info-card-details">
+                        <div class="detail-row">
+                            <span>Professors:</span>
+                            <span id="fac-prof">0</span>
+                        </div>
+                        <div class="detail-row">
+                            <span>Associate Prof:</span>
+                            <span id="fac-assoc">0</span>
+                        </div>
+                        <div class="detail-row">
+                            <span>Assistant Prof:</span>
+                            <span id="fac-asst">0</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="info-card">
+                    <div class="info-label">TOTAL STUDENTS</div>
+                    <div class="info-value" id="totalStudents">0</div>
+                    <div class="info-card-details">
+                        <div class="detail-row">
+                            <span>Boys:</span>
+                            <span id="std-boys">0</span>
+                        </div>
+                        <div class="detail-row">
+                            <span>Girls:</span>
+                            <span id="std-girls">0</span>
+                        </div>
+                        <div class="detail-row">
+                            <span>Classes:</span>
+                            <span id="std-classes">0</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
+        <!-- DEPARTMENT PERFORMANCE -->
         <div class="section">
-            <div class="section-title">DISPLAY STATUS</div>
-
-            <table class="dashboard_table">
-                <tr>
-                    <th>DISPLAY ID</th>
-                    <th>STATUS</th>
-                    <th>LAST SYNC</th>
-                </tr>
-                <tr>
-                    <td>DISP-01</td>
-                    <td class="dashboard_online">ONLINE</td>
-                    <td>10:13 AM</td>
-                </tr>
-                <tr>
-                    <td>DISP-02</td>
-                    <td class="dashboard_offline">OFFLINE</td>
-                    <td>09:40 AM</td>
-                </tr>
-            </table>
+            <div class="section-title">📈 DEPARTMENT PERFORMANCE</div>
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="metric-header">
+                        <span class="metric-icon">🎓</span>
+                        <span class="metric-title">Average Attendance</span>
+                    </div>
+                    <div class="metric-value" id="avgAttendance">92%</div>
+                    <div class="metric-trend metric-up">↑ 3% from last month</div>
+                </div>
+                
+                <div class="metric-card">
+                    <div class="metric-header">
+                        <span class="metric-icon">📚</span>
+                        <span class="metric-title">Pass Percentage</span>
+                    </div>
+                    <div class="metric-value" id="passPercentage">88%</div>
+                    <div class="metric-trend metric-up">↑ 5% from last semester</div>
+                </div>
+                
+                <div class="metric-card">
+                    <div class="metric-header">
+                        <span class="metric-icon">⭐</span>
+                        <span class="metric-title">Department Rating</span>
+                    </div>
+                    <div class="metric-value" id="deptRating">4.5/5</div>
+                    <div class="metric-trend metric-stable">→ Stable</div>
+                </div>
+                
+                <div class="metric-card">
+                    <div class="metric-header">
+                        <span class="metric-icon">🏆</span>
+                        <span class="metric-title">Competitions Won</span>
+                    </div>
+                    <div class="metric-value" id="competitionsWon">12</div>
+                    <div class="metric-trend metric-up">↑ 4 this year</div>
+                </div>
+            </div>
         </div>
+
+        <!-- ADDITIONAL DEPARTMENT METRICS -->
+        <div class="section">
+            <div class="section-title">📊 ADDITIONAL METRICS</div>
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="metric-header">
+                        <span class="metric-icon">💼</span>
+                        <span class="metric-title">Placement Rate</span>
+                    </div>
+                    <div class="metric-value" id="placementRate">85%</div>
+                    <div class="metric-trend metric-up">↑ 7% from last year</div>
+                </div>
+                
+                <div class="metric-card">
+                    <div class="metric-header">
+                        <span class="metric-icon">📄</span>
+                        <span class="metric-title">Research Papers</span>
+                    </div>
+                    <div class="metric-value" id="researchPapers">42</div>
+                    <div class="metric-trend metric-up">↑ 8 this semester</div>
+                </div>
+                
+                <div class="metric-card">
+                    <div class="metric-header">
+                        <span class="metric-icon">🔬</span>
+                        <span class="metric-title">Lab Utilization</span>
+                    </div>
+                    <div class="metric-value" id="labUtilization">78%</div>
+                    <div class="metric-trend metric-up">↑ 5% from last month</div>
+                </div>
+                
+                <div class="metric-card">
+                    <div class="metric-header">
+                        <span class="metric-icon">💻</span>
+                        <span class="metric-title">Projects Completed</span>
+                    </div>
+                    <div class="metric-value" id="projectsCompleted">156</div>
+                    <div class="metric-trend metric-up">↑ 18 this month</div>
+                </div>
+            </div>
+        </div>
+
+    
+
+  <!-- RECENT SUBMISSIONS -->
+        <div class="section">
+            <div class="section-title">📝 RECENT SUBMISSIONS</div>
+            <div class="table-container">
+                <table class="dashboard-table">
+                    <thead>
+                        <tr>
+                            <th>TITLE</th>
+                            <th>CATEGORY</th>
+                            <th>SUBMITTED BY</th>
+                            <th>DATE & TIME</th>
+                            <th>DESCRIPTION</th>
+                            <th>STATUS</th>
+                        </tr>
+                    </thead>
+                    <tbody id="submissionsTableBody">
+                        <tr>
+                            <td colspan="6" class="table-loading">Loading submissions...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- DISPLAY DEVICES -->
+        <div class="section">
+            <div class="section-title">🖥️ DISPLAY DEVICES STATUS</div>
+            <div class="table-container">
+                <table class="dashboard-table">
+                    <thead>
+                        <tr>
+                            <th>DISPLAY NAME</th>
+                            <th>DISPLAY CODE</th>
+                            <th>LOCATION</th>
+                            <th>IP ADDRESS</th>
+                            <th>STATUS</th>
+                            <th>LAST ACTIVE</th>
+                        </tr>
+                    </thead>
+                    <tbody id="displaysTableBody">
+                        <tr>
+                            <td colspan="6" class="table-loading">Loading displays...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+
+        <!-- FACULTY WITH HOVER NAME CARDS -->
+        <div class="section">
+            <div class="section-title">👨‍🏫 FACULTY MEMBERS</div>
+            <div class="table-container">
+                <table class="dashboard-table">
+                    <thead>
+                        <tr>
+                            <th>NAME</th>
+                            <th>FACULTY ID</th>
+                            <th>EMAIL</th>
+                            <th>DESIGNATION</th>
+                            <th>SPECIALIZATION</th>
+                        </tr>
+                    </thead>
+                    <tbody id="facultyTableBody">
+                        <tr>
+                            <td colspan="5" class="table-loading">Loading faculty...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+         <!-- CLASSES WITH HOVER DETAILS -->
+        <div class="section">
+            <div class="section-title">🎓 CLASSES OVERVIEW</div>
+            <div class="table-container">
+                <table class="dashboard-table">
+                    <thead>
+                        <tr>
+                            <th>CLASS ID</th>
+                            <th>SEMESTER</th>
+                            <th>SECTION</th>
+                            <th>STUDENTS</th>
+                            <th>COORDINATOR</th>
+                            <th>ROOM</th>
+                        </tr>
+                    </thead>
+                    <tbody id="classesTableBody">
+                        <tr>
+                            <td colspan="6" class="table-loading">Loading classes...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+
+      
+        <!-- LABS -->
+        <div class="section">
+            <div class="section-title">🔬 LABORATORIES</div>
+            <div class="table-container">
+                <table class="dashboard-table">
+                    <thead>
+                        <tr>
+                            <th>LAB NAME</th>
+                            <th>LAB CODE</th>
+                            <th>ROOM</th>
+                            <th>CAPACITY</th>
+                            <th>INCHARGE</th>
+                            <th>STATUS</th>
+                        </tr>
+                    </thead>
+                    <tbody id="labsTableBody">
+                        <tr>
+                            <td colspan="6" class="table-loading">Loading labs...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- ACTIVITY LOG -->
+        <!-- <div class="section">
+            <div class="section-title">📋 RECENT ACTIVITY LOG</div>
+            <div class="activity-log" id="activityLog">
+                <div class="activity-item">
+                    <div class="activity-icon">🔄</div>
+                    <div class="activity-content">
+                        <div class="activity-title">Loading activity...</div>
+                        <div class="activity-time">---</div>
+                    </div>
+                </div>
+            </div>
+        </div>  -->
 
     </div>
 
 </div>
 
+<!-- FOOTER -->
 <div class="footer">
-© 2025 SMART NOTICE BOARD | FINAL YEAR PROJECT
+  © 2026 SMART NOTICE BOARD SYSTEM | HSQUARE ELECTRONICS | HEMANT HARLALKA | All Rights Reserved
 </div>
 
+<script src="js/dashboard.js"></script>
 </body>
 </html>

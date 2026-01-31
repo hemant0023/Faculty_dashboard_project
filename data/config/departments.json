@@ -1,0 +1,31 @@
+[
+  {
+    "id": "DEPT-20260119_013352-EUSW",
+    "instituteId": "INST-20260116_005909-HJHP",
+    "code": "ECE",
+    "name": "Electronics and Communication Engineering",
+    "established": "2000",
+    "hodName": "Dr. KALPESH JADAV",
+    "hodDesignation": "Ph.D., M.Tech (VLSI)",
+    "totalStudents": 480,
+    "totalFaculty": 24,
+    "rating": 4.5,
+    "performance": {
+      "attendance": 92,
+      "passPercentage": 88,
+      "placementRate": 85,
+      "researchPapers": 42
+    },
+    "certificates": [
+      {
+        "name": "NBA Accredited",
+        "year": 2020
+      },
+      {
+        "name": "ISO 9001:2015",
+        "year": 2019
+      }
+    ],
+    "createdAt": "2026-01-18T20:03:52.950Z"
+  }
+]

@@ -1,0 +1,161 @@
+[
+  { 
+    "id": "CLASS-20260116_005909-NL2V",
+    "departmentId": "DEPT-20260119_013352-EUSW",
+    "classId": "ECE-301",
+    "semester": 1,
+    "section": "A",
+    "totalStudents": 60,
+    "coordinator": "FAC-1012",
+    "room": "101-A",
+    "type": "regular",
+    "rating": 4.2,
+    "performance": {
+      "attendance": 97,
+      "avgMarks": 85
+    },
+    "createdAt": "2026-01-15T19:29:09.532Z"
+  },
+
+  {
+    "id": "CLASS-20260116_005909-6CFM",
+   "departmentId": "DEPT-20260119_013352-EUSW",
+    "classId": "ECE-302",
+    "semester": 2,
+    "section": "A",
+    "totalStudents": 60,
+    "coordinator": "FAC-1012",
+    "room": "202-A",
+    "type": "regular",
+    "rating": 4.2,
+    "performance": {
+      "attendance": 96,
+      "avgMarks": 85
+    },
+    "createdAt": "2026-01-15T19:29:09.532Z"
+  },
+
+  {
+    "id": "CLASS-20260116_005909-5FRY",
+    "departmentId": "DEPT-20260119_013352-EUSW",
+    "classId": "ECE-303",
+    "semester": 3,
+    "section": "A",
+    "totalStudents": 60,
+    "coordinator": "FAC-1012",
+    "room": "303-A",
+    "type": "regular",
+    "rating": 4.2,
+    "performance": {
+      "attendance": 95,
+      "avgMarks": 80
+    },
+    "createdAt": "2026-01-15T19:29:09.532Z"
+  },
+  {
+    "id": "CLASS-20260116_005909-Y5JJ",
+    "departmentId": "DEPT-20260119_013352-EUSW",
+    "classId": "ECE-304",
+    "semester": 4,
+    "section": "A",
+    "totalStudents": 60,
+    "coordinator": "FAC-1012",
+    "room": "404-A",
+    "type": "regular",
+    "rating": 4.2,
+    "performance": {
+      "attendance": 91,
+      "avgMarks": 88
+    },
+    "createdAt": "2026-01-15T19:29:09.532Z"
+  },
+  {
+    "id": "CLASS-20260116_005909-UK3A",
+    "departmentId": "DEPT-20260119_013352-EUSW",
+    "classId": "ECE-305",
+    "semester": 5,
+    "section": "A",
+    "totalStudents": 60,
+    "coordinator": "FAC-1012",
+    "room": "505-A",
+    "type": "regular",
+    "rating": 4.2,
+    "performance": {
+      "attendance": 95,
+      "avgMarks": 84
+    },
+    "createdAt": "2026-01-15T19:29:09.532Z"
+  },
+  {
+    "id":           "CLASS-20260116_005909-1635",
+    "departmentId": "DEPT-20260119_013352-EUSW",
+    "classId": "ECE-306",
+    "semester": 6,
+    "section": "A",
+    "totalStudents": 60,
+    "coordinator": "FAC-1012",
+    "room": "606-A",
+    "type": "regular",
+    "rating": 4.2,
+    "performance": {
+      "attendance": 97,
+      "avgMarks": 75
+    },
+    "createdAt": "2026-01-15T19:29:09.532Z"
+  },
+  {
+    "id": "CLASS-20260116_005909-T82M",
+     "departmentId": "DEPT-20260119_013352-EUSW",
+    "classId": "ECE-307",
+    "semester": 7,
+    "section": "A",
+    "totalStudents": 60,
+    "coordinator": "FAC-1012",
+    "room": "707-A",
+    "type": "regular",
+    "rating": 4.2,
+    "performance": {
+      "attendance": 91,
+      "avgMarks": 83
+    },
+
+    "createdAt": "2026-01-15T19:29:09.532Z"
+  },
+  {
+    "id": "CLASS-20260116_005909-870G",
+     "departmentId": "DEPT-20260119_013352-EUSW",
+    "classId": "ECE-308",
+    "semester": 8,
+    "section": "A",
+    "totalStudents": 60,
+    "coordinator": "FAC-1012",
+    "room": "808-A",
+    "type": "regular",
+    "rating": 4.2,
+    "performance": {
+      "attendance": 91,
+      "avgMarks": 80
+    },
+    "createdAt": "2026-01-15T19:29:09.532Z"
+  },
+  
+  {
+    "id": "CLASS-20260119_023804-2AXQ",
+    "classId": "ECE-309",
+    "rating": 4,
+    "performance": {
+      "attendance": 90,
+      "avgMarks": 75
+    },
+
+    "departmentId": "DEPT-20260119_013352-EUSW",
+    "semester": "1",
+    "section": "A",
+    "totalStudents": "100",
+    "coordinator": "USER-20260119_021658-OBL6",
+    "room": "100",
+    "type": "regular",
+    "createdAt": "2026-01-18T21:08:04.347Z",
+    "createdBy": "ADMIN-20260119_011459-TV5C"
+  }
+]

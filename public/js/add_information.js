@@ -4,7 +4,8 @@
 // ============================================
 
 // ===== CONFIGURATION =====
-const API_URL = 'http://localhost:5000/api';
+//const API_URL = 'http://localhost:5000/api';
+const API_URL = '/api';
 const SERVER_BASE = 'http://localhost:5000';
 
 // ===== GLOBAL VARIABLES =====
@@ -590,13 +591,15 @@ function displaySubmittedEntries() {
 
 // ===== OPEN UPLOADED FILE =====
 function openFile(fileUrl, fileName, contentType) {
+    
     console.log('\n📁 OPENING FILE:');
     console.log('  Name:', fileName);
     console.log('  URL:', fileUrl);
     console.log('  Type:', contentType);
     
     // Build full URL
-    const fullUrl = `${SERVER_BASE}${fileUrl}`;
+   // const fullUrl = `${SERVER_BASE}${fileUrl}`;
+   const fullUrl = `${fileUrl}`;
     console.log('  Full URL:', fullUrl);
     
     // Open in new tab

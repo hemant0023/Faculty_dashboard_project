@@ -152,6 +152,14 @@ body {
     margin-top: 5px;
     font-style: italic;
 }
+/* ===== FOOTER ===== */
+.footer {
+    text-align: center;
+    padding: 20px;
+    color: white;
+    font-size: 13px;
+    margin-top: 30px;
+}
 
 .checkbox-group {
     display: flex;
@@ -676,7 +684,8 @@ body {
 </div>
 
 <script>
-const API_URL = 'http://localhost:5000/api';
+//const API_URL = 'http://localhost:5000/api';
+const API_URL = '/api';
 let displays = [];
 
 // Initialize
@@ -797,7 +806,7 @@ document.getElementById('addDeviceForm').addEventListener('submit', async functi
     console.log('Saving device:', deviceData);
     
     try {
-        const response = await fetch(`${API_URL}/displays`, {
+        const response = await fetch(`${API_URL}/config/displays`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -825,6 +834,7 @@ document.getElementById('addDeviceForm').addEventListener('submit', async functi
 
 // Generate configuration script
 function generateConfigScript(device) {
+
     const script = `#!/bin/bash
 # Smart Notice Board - Raspberry Pi Setup Script
 # Generated on: ${new Date().toLocaleString()}
@@ -1015,6 +1025,10 @@ function logout() {
     }
 }
 </script>
+
+<div class="footer">
+  © 2026 SMART NOTICE BOARD SYSTEM | HSQUARE ELECTRONICS | HEMANT HARLALKA | All Rights Reserved
+</div>
 
 </body>
 </html>

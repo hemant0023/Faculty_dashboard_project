@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>COMPLETE CONFIGURATION | SMART NOTICE BOARD</title>
+<title>DASBOARD CONFIGURATION </title>
 <style>
 * {
     margin: 0;
@@ -17,7 +17,6 @@ body {
     min-height: 100vh;
 }
 
-/* ===== TOP HEADER ===== */
 .top-header {
     background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
     color: white;
@@ -51,7 +50,59 @@ body {
     font-weight: bold;
 }
 
+
+
+
+
 /* ===== LAYOUT ===== */
+.layout {
+    display: flex;
+    min-height: calc(100vh - 120px);
+    max-width: 1920px;
+    margin: 0 auto;
+}
+
+/* ===== SIDEBAR ===== */
+.sidebar {
+    width: 260px;
+    background: linear-gradient(180deg, #1e293b 0%, #0f172a 100%);
+    padding: 25px 0;
+    box-shadow: 4px 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.sidebar a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #cbd5e1;
+    text-decoration: none;
+    padding: 16px 28px;
+    font-size: 14px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border-left: 4px solid transparent;
+}
+
+.sidebar a:hover {
+    background-color: rgba(59, 130, 246, 0.1);
+    color: white;
+    border-left-color: #3b82f6;
+    padding-left: 32px;
+}
+
+.sidebar a.active {
+    background: linear-gradient(90deg, rgba(59, 130, 246, 0.2) 0%, transparent 100%);
+    color: white;
+    border-left-color: #60a5fa;
+}
+
+.sidebar-icon {
+    font-size: 18px;
+    width: 24px;
+}
+
+
+/* 
 .layout {
     display: flex;
     max-width: 1600px;
@@ -88,7 +139,7 @@ body {
     background: linear-gradient(90deg, rgba(59, 130, 246, 0.1) 0%, transparent 100%);
     border-left-color: #3b82f6;
     color: #3b82f6;
-}
+} */
 
 .main-content {
     flex: 1;
@@ -113,7 +164,6 @@ body {
     font-size: 14px;
 }
 
-/* ===== CONFIG LAYOUT ===== */
 .config-layout {
     display: flex;
     gap: 20px;
@@ -213,7 +263,25 @@ body {
     font-weight: 600;
 }
 
-/* ===== FORMS ===== */
+.info-box {
+    background: #dbeafe;
+    border-left: 4px solid #3b82f6;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.info-box-title {
+    font-weight: 600;
+    color: #1e40af;
+    margin-bottom: 5px;
+}
+
+.info-box-text {
+    font-size: 13px;
+    color: #1e40af;
+}
+
 .form-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -239,6 +307,9 @@ body {
     font-weight: 600;
     color: #475569;
     margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
 }
 
 .required {
@@ -308,12 +379,6 @@ body {
     color: white;
 }
 
-.btn-danger {
-    background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
-    color: white;
-}
-
-/* ===== TABLES ===== */
 .data-table-container {
     margin-top: 30px;
     border: 2px solid #e2e8f0;
@@ -424,7 +489,6 @@ body {
     transform: scale(1.05);
 }
 
-/* ===== MODALS ===== */
 .modal-overlay {
     display: none;
     position: fixed;
@@ -507,7 +571,6 @@ body {
     justify-content: flex-end;
 }
 
-/* ===== DETAIL VIEW ===== */
 .detail-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -534,27 +597,6 @@ body {
     font-weight: 500;
 }
 
-/* ===== INFO BOX ===== */
-.info-box {
-    background: #dbeafe;
-    border-left: 4px solid #3b82f6;
-    padding: 15px;
-    border-radius: 8px;
-    margin-bottom: 20px;
-}
-
-.info-box-title {
-    font-weight: 600;
-    color: #1e40af;
-    margin-bottom: 5px;
-}
-
-.info-box-text {
-    font-size: 13px;
-    color: #1e40af;
-}
-
-/* ===== BATCH CREATION ===== */
 .batch-controls {
     background: #f8fafc;
     padding: 15px;
@@ -604,12 +646,13 @@ body {
     }
 }
 </style>
+
+
 </head>
 <body>
 
-<!-- TOP HEADER -->
 <div class="top-header">
-    <h1>🏛️ COMPLETE CONFIGURATION SYSTEM - ALL MODULES</h1>
+    <h1>🏛️DASHBOARD CONFIGURATION</h1>
     <div class="header-user-info">
         <div class="user-avatar" id="headerAvatar">SA</div>
         <div>
@@ -619,42 +662,49 @@ body {
     </div>
 </div>
 
-<!-- MAIN LAYOUT -->
 <div class="layout">
     
-    <!-- SIDEBAR -->
-    <div class="sidebar">
-        <a href="dashboard.html">
-            <span>📊</span>
-            <span>DASHBOARD</span>
-        </a>
-        <a href="add_information.html">
-            <span>📝</span>
-            <span>ADD INFORMATION</span>
-        </a>
-        <a href="configuration-complete.html" class="active">
-            <span>⚙️</span>
-            <span>CONFIGURATION</span>
-        </a>
-        <a href="#" onclick="logout()">
-            <span>🚪</span>
-            <span>LOGOUT</span>
-        </a>
-    </div>
+<div class="sidebar">
+    <a href="home.html">
+        <span class="sidebar-icon">🏠</span>
+        HOME
+    </a>
+    <a href="dashboard.html">
+        <span class="sidebar-icon">📊</span>
+        DASHBOARD
+    </a>
+    <a href="add-information.html" >
+        <span class="sidebar-icon">➕</span>
+        ADD INFORMATION
+    </a>
+    <a href="#">
+        <span class="sidebar-icon">📅</span>
+        SCHEDULE MANAGER
+    </a>
+      <a href="device-management.html">
+        <span>🖥️</span> DISPLAY DEVICES
+    </a>
+    <a href="settings.html" class="active">
+        <span class="sidebar-icon">⚙️</span>
+        SETTINGS
+    </a>
+    <a href="#" onclick="logout()">
+        <span class="sidebar-icon">🚪</span>
+        LOGOUT
+    </a>
+</div>
+
     
-    <!-- MAIN CONTENT -->
+    
     <div class="main-content">
         
-        <!-- PAGE TITLE -->
         <div class="page-title">
-            <h2>⚙️ COMPLETE CONFIGURATION SYSTEM</h2>
-            <p>Full CRUD Operations (Create, Read, Update, Delete) for ALL modules with batch operations</p>
+            <h2>⚙️CONFIGURATION SYSTEM</h2>
+           
         </div>
         
-        <!-- CONFIGURATION LAYOUT -->
         <div class="config-layout">
             
-            <!-- NAVIGATION -->
             <div class="config-nav">
                 <div class="config-nav-title">ALL MODULES</div>
                 <div class="nav-item active" data-block="university">
@@ -691,29 +741,101 @@ body {
                 </div>
             </div>
             
-            <!-- CONTENT BLOCKS -->
             <div class="config-content">
                 
-                <!-- Each block will have same structure with CRUD operations -->
-                <!-- I'll show the complete structure for University, then similar for others -->
-                
-                <!-- UNIVERSITY BLOCK -->
+                <!-- ==================== UNIVERSITY BLOCK ==================== -->
                 <div class="config-block active" id="block-university">
                     <div class="block-header">
                         <div class="block-title">
                             <span>🏛️</span>
                             <span>UNIVERSITY MANAGEMENT</span>
                         </div>
-                        <span class="block-badge">FULL CRUD</span>
+                        <!-- <span class="block-badge">FULL CRUD</span> -->
                     </div>
                     
                     <div class="info-box">
-                        <div class="info-box-title">✨ COMPLETE OPERATIONS</div>
-                        <div class="info-box-text">Create, View, Edit, and Delete universities. All changes are saved to server and persisted.</div>
+                        <div class="info-box-title">ℹ️ UNIVERSITY CONFIGURATION</div>
+                        <div class="info-box-text">Configure the top-level university information. All other entities belong to this university.</div>
                     </div>
                     
-                    <form id="universityForm">
-                        <!-- Form fields here - same as before -->
+                    <form id="universityForm" onsubmit="return saveUniversity(event)">
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label>UNIVERSITY NAME <span class="required">*</span></label>
+                                <input type="text" id="uni_name" placeholder="e.g., Parul University" required>
+                            </div>
+                            <div class="form-group">
+                                <label>UNIVERSITY CODE <span class="required">*</span></label>
+                                <input type="text" id="uni_code" placeholder="e.g., PU" required>
+                            </div>
+                            <div class="form-group">
+                                <label>ESTABLISHED YEAR <span class="required">*</span></label>
+                                <input type="number" id="uni_year" placeholder="e.g., 1990" required>
+                            </div>
+                            <div class="form-group">
+                                <label>UNIVERSITY TYPE</label>
+                                <select id="uni_type">
+                                    <option value="private">Private University</option>
+                                    <option value="government">Government University</option>
+                                    <option value="deemed">Deemed University</option>
+                                    <option value="autonomous">Autonomous</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label>CHANCELLOR NAME</label>
+                                <input type="text" id="uni_chancellor" placeholder="e.g., Dr. Devanshu Patel">
+                            </div>
+                            <div class="form-group">
+                                <label>VICE CHANCELLOR NAME</label>
+                                <input type="text" id="uni_vice_chancellor" placeholder="e.g., Dr. Rajesh Kumar">
+                            </div>
+                        </div>
+                        
+                        <div class="form-grid single">
+                            <div class="form-group">
+                                <label>ADDRESS</label>
+                                <textarea id="uni_address" placeholder="Enter complete university address"></textarea>
+                            </div>
+                        </div>
+                        
+                        <div class="form-grid three">
+                            <div class="form-group">
+                                <label>WEBSITE</label>
+                                <input type="url" id="uni_website" placeholder="https://example.edu">
+                            </div>
+                            <div class="form-group">
+                                <label>EMAIL</label>
+                                <input type="email" id="uni_email" placeholder="info@example.edu">
+                            </div>
+                            <div class="form-group">
+                                <label>PHONE</label>
+                                <input type="tel" id="uni_phone" placeholder="+91-XXXXXXXXXX">
+                            </div>
+                        </div>
+                        
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label>STATUS</label>
+                                <select id="uni_status">
+                                    <option value="active">Active</option>
+                                    <option value="inactive">Inactive</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="button-group">
+                            <button type="submit" class="btn btn-primary">
+                                <span>💾</span>
+                                <span>SAVE UNIVERSITY</span>
+                            </button>
+                            <button type="button" class="btn btn-secondary" onclick="document.getElementById('universityForm').reset()">
+                                <span>🔄</span>
+                                <span>RESET</span>
+                            </button>
+                        </div>
                     </form>
                     
                     <div class="data-table-container">
@@ -741,15 +863,792 @@ body {
                     </div>
                 </div>
                 
-                <!-- Similar blocks for all other modules -->
-                <!-- ADMINS, INSTITUTES, DEPARTMENTS, FACULTY, CLASSES, LABS, ROUTINE -->
+                <!-- ==================== ADMIN USERS BLOCK ==================== -->
+                <div class="config-block" id="block-admins">
+                    <div class="block-header">
+                        <div class="block-title">
+                            <span>👑</span>
+                            <span>ADMIN USERS MANAGEMENT</span>
+                        </div>
+                        <span class="block-badge">FULL CRUD</span>
+                    </div>
+                    
+                    <div class="info-box">
+                        <div class="info-box-title">ℹ️ ADMIN USERS</div>
+                        <div class="info-box-text">Create system administrators who can access all configuration modules. Each admin can login with their credentials.</div>
+                    </div>
+                    
+                    <form id="adminForm" onsubmit="return saveAdmin(event)">
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label>ADMIN NAME <span class="required">*</span></label>
+                                <input type="text" id="admin_name" placeholder="e.g., John Doe" required>
+                            </div>
+                            <div class="form-group">
+                                <label>ADMIN ID <span class="required">*</span></label>
+                                <input type="text" id="admin_id" placeholder="e.g., ADMIN-001" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label>EMAIL <span class="required">*</span></label>
+                                <input type="email" id="admin_email" placeholder="admin@example.edu" required>
+                            </div>
+                            <div class="form-group">
+                                <label>PASSWORD <span class="required">*</span></label>
+                                <input type="password" id="admin_password" placeholder="Strong password" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label>ROLE <span class="required">*</span></label>
+                                <select id="admin_role" required>
+                                    <option value="super-admin">Super Admin</option>
+                                    <option value="system-admin">System Admin</option>
+                                    <option value="content-admin">Content Admin</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>PHONE</label>
+                                <input type="tel" id="admin_phone" placeholder="+91-XXXXXXXXXX">
+                            </div>
+                        </div>
+                        
+                        <div class="button-group">
+                            <button type="submit" class="btn btn-primary">
+                                <span>👤</span>
+                                <span>CREATE ADMIN</span>
+                            </button>
+                            <button type="button" class="btn btn-secondary" onclick="document.getElementById('adminForm').reset()">
+                                <span>🔄</span>
+                                <span>RESET</span>
+                            </button>
+                        </div>
+                    </form>
+                    
+                    <div class="data-table-container">
+                        <div class="table-header">
+                            <div class="table-title">ADMIN USERS</div>
+                            <div class="table-count" id="adminCount">0</div>
+                        </div>
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>NAME</th>
+                                    <th>ADMIN ID</th>
+                                    <th>EMAIL</th>
+                                    <th>ROLE</th>
+                                    <th>STATUS</th>
+                                    <th>ACTIONS</th>
+                                </tr>
+                            </thead>
+                            <tbody id="adminTableBody">
+                                <tr>
+                                    <td colspan="6" style="text-align: center; color: #94a3b8;">Loading...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                <!-- ==================== INSTITUTES BLOCK ==================== -->
+                <div class="config-block" id="block-institutes">
+                    <div class="block-header">
+                        <div class="block-title">
+                            <span>🏢</span>
+                            <span>INSTITUTES MANAGEMENT</span>
+                        </div>
+                        <span class="block-badge">FULL CRUD</span>
+                    </div>
+                    
+                    <div class="info-box">
+                        <div class="info-box-title">ℹ️ INSTITUTES</div>
+                        <div class="info-box-text">Institutes are under University. Each institute has a Dean/Principal and contains multiple departments.</div>
+                    </div>
+                    
+                    <form id="instituteForm" onsubmit="return saveInstitute(event)">
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label>INSTITUTE NAME <span class="required">*</span></label>
+                                <input type="text" id="inst_name" placeholder="e.g., Institute of Engineering" required>
+                            </div>
+                            <div class="form-group">
+                                <label>INSTITUTE CODE <span class="required">*</span></label>
+                                <input type="text" id="inst_code" placeholder="e.g., IOE" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label>ESTABLISHED YEAR</label>
+                                <input type="number" id="inst_year" placeholder="e.g., 2000">
+                            </div>
+                            <div class="form-group">
+                                <label>INSTITUTE TYPE</label>
+                                <select id="inst_type">
+                                    <option value="engineering">Engineering</option>
+                                    <option value="management">Management</option>
+                                    <option value="science">Science</option>
+                                    <option value="arts">Arts</option>
+                                    <option value="law">Law</option>
+                                    <option value="pharmacy">Pharmacy</option>
+                                    <option value="medical">Medical</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label>DEAN NAME</label>
+                                <input type="text" id="inst_dean" placeholder="e.g., Dr. Amit Patel">
+                            </div>
+                            <div class="form-group">
+                                <label>PRINCIPAL NAME</label>
+                                <input type="text" id="inst_principal" placeholder="e.g., Dr. Priya Shah">
+                            </div>
+                        </div>
+                        
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label>EMAIL</label>
+                                <input type="email" id="inst_email" placeholder="institute@example.edu">
+                            </div>
+                            <div class="form-group">
+                                <label>PHONE</label>
+                                <input type="tel" id="inst_phone" placeholder="+91-XXXXXXXXXX">
+                            </div>
+                        </div>
+                        
+                        <div class="button-group">
+                            <button type="submit" class="btn btn-primary">
+                                <span>🏢</span>
+                                <span>CREATE INSTITUTE</span>
+                            </button>
+                            <button type="button" class="btn btn-secondary" onclick="document.getElementById('instituteForm').reset()">
+                                <span>🔄</span>
+                                <span>RESET</span>
+                            </button>
+                        </div>
+                    </form>
+                    
+                    <div class="data-table-container">
+                        <div class="table-header">
+                            <div class="table-title">INSTITUTES</div>
+                            <div class="table-count" id="instituteCount">0</div>
+                        </div>
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>INSTITUTE</th>
+                                    <th>CODE</th>
+                                    <th>TYPE</th>
+                                    <th>DEAN</th>
+                                    <th>PRINCIPAL</th>
+                                    <th>ACTIONS</th>
+                                </tr>
+                            </thead>
+                            <tbody id="instituteTableBody">
+                                <tr>
+                                    <td colspan="6" style="text-align: center; color: #94a3b8;">Loading...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                <!-- ==================== DEPARTMENTS BLOCK ==================== -->
+                <div class="config-block" id="block-departments">
+                    <div class="block-header">
+                        <div class="block-title">
+                            <span>📚</span>
+                            <span>DEPARTMENTS MANAGEMENT</span>
+                        </div>
+                        <span class="block-badge">FULL CRUD</span>
+                    </div>
+                    
+                    <div class="info-box">
+                        <div class="info-box-title">ℹ️ DEPARTMENTS</div>
+                        <div class="info-box-text">Departments are under Institutes. Each department has a HOD and contains faculty members and classes.</div>
+                    </div>
+                    
+                    <form id="departmentForm" onsubmit="return saveDepartment(event)">
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label>SELECT INSTITUTE <span class="required">*</span></label>
+                                <select id="dept_institute" required>
+                                    <option value="">-- Select Institute --</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>DEPARTMENT NAME <span class="required">*</span></label>
+                                <input type="text" id="dept_name" placeholder="e.g., Electronics and Communication" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label>DEPARTMENT CODE <span class="required">*</span></label>
+                                <input type="text" id="dept_code" placeholder="e.g., ECE" required>
+                            </div>
+                            <div class="form-group">
+                                <label>ESTABLISHED YEAR</label>
+                                <input type="number" id="dept_year" placeholder="e.g., 2005">
+                            </div>
+                        </div>
+                        
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label>HOD NAME</label>
+                                <input type="text" id="dept_hod" placeholder="e.g., Dr. Rajesh Kumar">
+                            </div>
+                            <div class="form-group">
+                                <label>HOD DESIGNATION</label>
+                                <input type="text" id="dept_hod_designation" placeholder="e.g., Ph.D., M.Tech">
+                            </div>
+                        </div>
+                        
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label>TOTAL STUDENTS</label>
+                                <input type="number" id="dept_students" placeholder="e.g., 480">
+                            </div>
+                            <div class="form-group">
+                                <label>TOTAL FACULTY</label>
+                                <input type="number" id="dept_faculty" placeholder="e.g., 24">
+                            </div>
+                        </div>
+                        
+                        <div class="button-group">
+                            <button type="submit" class="btn btn-primary">
+                                <span>📚</span>
+                                <span>CREATE DEPARTMENT</span>
+                            </button>
+                            <button type="button" class="btn btn-secondary" onclick="document.getElementById('departmentForm').reset()">
+                                <span>🔄</span>
+                                <span>RESET</span>
+                            </button>
+                        </div>
+                    </form>
+                    
+                    <div class="data-table-container">
+                        <div class="table-header">
+                            <div class="table-title">DEPARTMENTS</div>
+                            <div class="table-count" id="departmentCount">0</div>
+                        </div>
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>DEPARTMENT</th>
+                                    <th>CODE</th>
+                                    <th>INSTITUTE</th>
+                                    <th>HOD</th>
+                                    <th>STUDENTS</th>
+                                    <th>FACULTY</th>
+                                    <th>ACTIONS</th>
+                                </tr>
+                            </thead>
+                            <tbody id="departmentTableBody">
+                                <tr>
+                                    <td colspan="7" style="text-align: center; color: #94a3b8;">Loading...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                <!-- ==================== FACULTY BLOCK ==================== -->
+                <div class="config-block" id="block-faculty">
+                    <div class="block-header">
+                        <div class="block-title">
+                            <span>👨‍🏫</span>
+                            <span>FACULTY MANAGEMENT</span>
+                        </div>
+                        <span class="block-badge">FULL CRUD</span>
+                    </div>
+                    
+                    <div class="info-box">
+                        <div class="info-box-title">ℹ️ FACULTY</div>
+                        <div class="info-box-text">Faculty members are under Departments. They can login and create content for notice boards.</div>
+                    </div>
+                    
+                    <form id="facultyForm" onsubmit="return saveFaculty(event)">
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label>SELECT DEPARTMENT <span class="required">*</span></label>
+                                <select id="fac_dept" required>
+                                    <option value="">-- Select Department --</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>FACULTY NAME <span class="required">*</span></label>
+                                <input type="text" id="fac_name" placeholder="e.g., Dr. Anita Deshmukh" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label>FACULTY ID <span class="required">*</span></label>
+                                <input type="text" id="fac_id" placeholder="e.g., FAC-1023" required>
+                            </div>
+                            <div class="form-group">
+                                <label>EMAIL <span class="required">*</span></label>
+                                <input type="email" id="fac_email" placeholder="faculty@example.edu" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label>PASSWORD <span class="required">*</span></label>
+                                <input type="password" id="fac_password" placeholder="Password" required>
+                            </div>
+                            <div class="form-group">
+                                <label>DESIGNATION</label>
+                                <select id="fac_designation">
+                                    <option value="professor">Professor</option>
+                                    <option value="associate-professor">Associate Professor</option>
+                                    <option value="assistant-professor">Assistant Professor</option>
+                                    <option value="lecturer">Lecturer</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label>QUALIFICATION</label>
+                                <input type="text" id="fac_qualification" placeholder="e.g., Ph.D., M.Tech">
+                            </div>
+                            <div class="form-group">
+                                <label>SPECIALIZATION</label>
+                                <input type="text" id="fac_specialization" placeholder="e.g., VLSI Design">
+                            </div>
+                        </div>
+                        
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label>PHONE</label>
+                                <input type="tel" id="fac_phone" placeholder="+91-XXXXXXXXXX">
+                            </div>
+                            <div class="form-group">
+                                <label>REQUIRES APPROVAL</label>
+                                <select id="fac_approval">
+                                    <option value="yes">Yes</option>
+                                    <option value="no">No</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="button-group">
+                            <button type="submit" class="btn btn-primary">
+                                <span>👨‍🏫</span>
+                                <span>CREATE FACULTY</span>
+                            </button>
+                            <button type="button" class="btn btn-secondary" onclick="document.getElementById('facultyForm').reset()">
+                                <span>🔄</span>
+                                <span>RESET</span>
+                            </button>
+                        </div>
+                    </form>
+                    
+                    <div class="data-table-container">
+                        <div class="table-header">
+                            <div class="table-title">FACULTY MEMBERS</div>
+                            <div class="table-count" id="facultyCount">0</div>
+                        </div>
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>NAME</th>
+                                    <th>FACULTY ID</th>
+                                    <th>DEPARTMENT</th>
+                                    <th>EMAIL</th>
+                                    <th>DESIGNATION</th>
+                                    <th>SPECIALIZATION</th>
+                                    <th>ACTIONS</th>
+                                </tr>
+                            </thead>
+                            <tbody id="facultyTableBody">
+                                <tr>
+                                    <td colspan="7" style="text-align: center; color: #94a3b8;">Loading...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                <!-- ==================== CLASSES BLOCK ==================== -->
+                <div class="config-block" id="block-classes">
+                    <div class="block-header">
+                        <div class="block-title">
+                            <span>🎓</span>
+                            <span>CLASSES MANAGEMENT</span>
+                        </div>
+                        <span class="block-badge">FULL CRUD + BATCH</span>
+                    </div>
+                    
+                    <div class="info-box">
+                        <div class="info-box-title">ℹ️ CLASSES</div>
+                        <div class="info-box-text">Define semester, section, and student strength for each class. Supports batch creation for multiple sections.</div>
+                    </div>
+                    
+                    <form id="classForm" onsubmit="return saveClass(event)">
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label>SELECT DEPARTMENT <span class="required">*</span></label>
+                                <select id="class_dept" required>
+                                    <option value="">-- Select Department --</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>CLASS ID <span class="required">*</span></label>
+                                <input type="text" id="class_id" placeholder="e.g., ECE-301-A" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label>SEMESTER <span class="required">*</span></label>
+                                <select id="class_semester" required>
+                                    <option value="">-- Select --</option>
+                                    <option value="1">Semester 1</option>
+                                    <option value="2">Semester 2</option>
+                                    <option value="3">Semester 3</option>
+                                    <option value="4">Semester 4</option>
+                                    <option value="5">Semester 5</option>
+                                    <option value="6">Semester 6</option>
+                                    <option value="7">Semester 7</option>
+                                    <option value="8">Semester 8</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>SECTION <span class="required">*</span></label>
+                                <select id="class_section" required>
+                                    <option value="">-- Select --</option>
+                                    <option value="A">Section A</option>
+                                    <option value="B">Section B</option>
+                                    <option value="C">Section C</option>
+                                    <option value="D">Section D</option>
+                                    <option value="E">Section E</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label>TOTAL STUDENTS <span class="required">*</span></label>
+                                <input type="number" id="class_students" placeholder="e.g., 60" required min="1">
+                            </div>
+                            <div class="form-group">
+                                <label>CLASS COORDINATOR</label>
+                                <select id="class_coordinator">
+                                    <option value="">-- Select Faculty --</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label>ROOM NUMBER</label>
+                                <input type="text" id="class_room" placeholder="e.g., 301-A">
+                            </div>
+                            <div class="form-group">
+                                <label>CLASS TYPE</label>
+                                <select id="class_type">
+                                    <option value="regular">Regular Class</option>
+                                    <option value="honors">Honors Class</option>
+                                    <option value="remedial">Remedial Class</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="button-group">
+                            <button type="submit" class="btn btn-primary">
+                                <span>🎓</span>
+                                <span>CREATE CLASS</span>
+                            </button>
+                            <button type="button" class="btn btn-success" onclick="showBatchClassModal()">
+                                <span>⚡</span>
+                                <span>BATCH CREATE</span>
+                            </button>
+                            <button type="button" class="btn btn-secondary" onclick="document.getElementById('classForm').reset()">
+                                <span>🔄</span>
+                                <span>RESET</span>
+                            </button>
+                        </div>
+                    </form>
+                    
+                    <div class="data-table-container">
+                        <div class="table-header">
+                            <div class="table-title">CLASSES</div>
+                            <div class="table-count" id="classCount">0</div>
+                        </div>
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>CLASS ID</th>
+                                    <th>DEPARTMENT</th>
+                                    <th>SEMESTER</th>
+                                    <th>SECTION</th>
+                                    <th>STUDENTS</th>
+                                    <th>ROOM</th>
+                                    <th>ACTIONS</th>
+                                </tr>
+                            </thead>
+                            <tbody id="classTableBody">
+                                <tr>
+                                    <td colspan="7" style="text-align: center; color: #94a3b8;">Loading...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                <!-- ==================== LABS BLOCK ==================== -->
+                <div class="config-block" id="block-labs">
+                    <div class="block-header">
+                        <div class="block-title">
+                            <span>🔬</span>
+                            <span>LABORATORY MANAGEMENT</span>
+                        </div>
+                        <span class="block-badge">FULL CRUD</span>
+                    </div>
+                    
+                    <div class="info-box">
+                        <div class="info-box-title">ℹ️ LABS</div>
+                        <div class="info-box-text">Create and manage laboratory sessions with equipment, capacity, and safety requirements.</div>
+                    </div>
+                    
+                    <form id="labForm" onsubmit="return saveLab(event)">
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label>LAB NAME <span class="required">*</span></label>
+                                <input type="text" id="lab_name" placeholder="e.g., Digital Electronics Lab" required>
+                            </div>
+                            <div class="form-group">
+                                <label>LAB CODE <span class="required">*</span></label>
+                                <input type="text" id="lab_code" placeholder="e.g., LAB-DE-01" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label>DEPARTMENT <span class="required">*</span></label>
+                                <select id="lab_dept" required>
+                                    <option value="">-- Select Department --</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>ROOM NUMBER <span class="required">*</span></label>
+                                <input type="text" id="lab_room" placeholder="e.g., LAB-301" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label>CAPACITY (STUDENTS) <span class="required">*</span></label>
+                                <input type="number" id="lab_capacity" placeholder="e.g., 30" required min="1">
+                            </div>
+                            <div class="form-group">
+                                <label>LAB TYPE</label>
+                                <select id="lab_type">
+                                    <option value="electronics">Electronics Lab</option>
+                                    <option value="computer">Computer Lab</option>
+                                    <option value="physics">Physics Lab</option>
+                                    <option value="chemistry">Chemistry Lab</option>
+                                    <option value="mechanical">Mechanical Lab</option>
+                                    <option value="civil">Civil Engineering Lab</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="form-grid single">
+                            <div class="form-group">
+                                <label>EQUIPMENT LIST</label>
+                                <textarea id="lab_equipment" placeholder="List of equipment available in the lab (one per line)"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label>SAFETY REQUIREMENTS</label>
+                                <textarea id="lab_safety" placeholder="Safety protocols and requirements"></textarea>
+                            </div>
+                        </div>
+                        
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label>LAB INCHARGE</label>
+                                <select id="lab_incharge">
+                                    <option value="">-- Select Faculty --</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>STATUS</label>
+                                <select id="lab_status">
+                                    <option value="operational">Operational</option>
+                                    <option value="maintenance">Under Maintenance</option>
+                                    <option value="inactive">Inactive</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="button-group">
+                            <button type="submit" class="btn btn-primary">
+                                <span>🔬</span>
+                                <span>CREATE LAB</span>
+                            </button>
+                            <button type="button" class="btn btn-secondary" onclick="document.getElementById('labForm').reset()">
+                                <span>🔄</span>
+                                <span>RESET</span>
+                            </button>
+                        </div>
+                    </form>
+                    
+                    <div class="data-table-container">
+                        <div class="table-header">
+                            <div class="table-title">LABORATORIES</div>
+                            <div class="table-count" id="labCount">0</div>
+                        </div>
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>LAB NAME</th>
+                                    <th>CODE</th>
+                                    <th>DEPARTMENT</th>
+                                    <th>ROOM</th>
+                                    <th>CAPACITY</th>
+                                    <th>STATUS</th>
+                                    <th>ACTIONS</th>
+                                </tr>
+                            </thead>
+                            <tbody id="labTableBody">
+                                <tr>
+                                    <td colspan="7" style="text-align: center; color: #94a3b8;">Loading...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                <!-- ==================== ROUTINE BLOCK ==================== -->
+                <div class="config-block" id="block-routine">
+                    <div class="block-header">
+                        <div class="block-title">
+                            <span>📅</span>
+                            <span>CLASS ROUTINE MANAGEMENT</span>
+                        </div>
+                        <span class="block-badge">FULL CRUD + BATCH</span>
+                    </div>
+                    
+                    <div class="info-box">
+                        <div class="info-box-title">ℹ️ CLASS ROUTINE</div>
+                        <div class="info-box-text">Define weekly schedule for each class including subject, faculty, time slots, and room allocation.</div>
+                    </div>
+                    
+                    <form id="routineForm" onsubmit="return saveRoutine(event)">
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label>SELECT CLASS <span class="required">*</span></label>
+                                <select id="routine_class" required>
+                                    <option value="">-- Select Class --</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>DAY <span class="required">*</span></label>
+                                <select id="routine_day" required>
+                                    <option value="">-- Select --</option>
+                                    <option value="Monday">Monday</option>
+                                    <option value="Tuesday">Tuesday</option>
+                                    <option value="Wednesday">Wednesday</option>
+                                    <option value="Thursday">Thursday</option>
+                                    <option value="Friday">Friday</option>
+                                    <option value="Saturday">Saturday</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label>START TIME <span class="required">*</span></label>
+                                <input type="time" id="routine_start" required>
+                            </div>
+                            <div class="form-group">
+                                <label>END TIME <span class="required">*</span></label>
+                                <input type="time" id="routine_end" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label>SUBJECT <span class="required">*</span></label>
+                                <input type="text" id="routine_subject" placeholder="e.g., Digital Electronics" required>
+                            </div>
+                            <div class="form-group">
+                                <label>SELECT FACULTY <span class="required">*</span></label>
+                                <select id="routine_faculty" required>
+                                    <option value="">-- Select Faculty --</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label>ROOM NUMBER</label>
+                                <input type="text" id="routine_room" placeholder="e.g., 301-A">
+                            </div>
+                            <div class="form-group">
+                                <label>TYPE</label>
+                                <select id="routine_type">
+                                    <option value="theory">Theory</option>
+                                    <option value="practical">Practical</option>
+                                    <option value="tutorial">Tutorial</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="button-group">
+                            <button type="submit" class="btn btn-primary">
+                                <span>📅</span>
+                                <span>ADD ROUTINE</span>
+                            </button>
+                            <button type="button" class="btn btn-secondary" onclick="document.getElementById('routineForm').reset()">
+                                <span>🔄</span>
+                                <span>RESET</span>
+                            </button>
+                        </div>
+                    </form>
+                    
+                    <div class="data-table-container">
+                        <div class="table-header">
+                            <div class="table-title">CLASS ROUTINES</div>
+                            <div class="table-count" id="routineCount">0</div>
+                        </div>
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>CLASS</th>
+                                    <th>DAY</th>
+                                    <th>TIME</th>
+                                    <th>SUBJECT</th>
+                                    <th>FACULTY</th>
+                                    <th>ROOM</th>
+                                    <th>TYPE</th>
+                                    <th>ACTIONS</th>
+                                </tr>
+                            </thead>
+                            <tbody id="routineTableBody">
+                                <tr>
+                                    <td colspan="8" style="text-align: center; color: #94a3b8;">Loading...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
                 
             </div>
         </div>
     </div>
 </div>
 
-<!-- VIEW DETAILS MODAL -->
+<!-- VIEW MODAL -->
 <div class="modal-overlay" id="viewModal">
     <div class="modal" style="width: 700px;">
         <div class="modal-header">
@@ -758,7 +1657,6 @@ body {
         </div>
         <div class="modal-body">
             <div class="detail-grid" id="viewModalContent">
-                <!-- Details populated by JavaScript -->
             </div>
         </div>
         <div class="modal-footer">
@@ -777,12 +1675,11 @@ body {
         <div class="modal-body">
             <form id="editForm">
                 <div id="editFormContent">
-                    <!-- Form populated by JavaScript -->
                 </div>
             </form>
         </div>
         <div class="modal-footer">
-            <button class="btn btn-primary" onclick="saveEdit()">
+            <button class="btn btn-primary" onclick="saveEditData()">
                 <span>💾</span>
                 <span>SAVE CHANGES</span>
             </button>
@@ -792,9 +1689,9 @@ body {
 </div>
 
 <div class="footer">
-    © 2026 PARUL UNIVERSITY | COMPLETE CONFIGURATION SYSTEM | FULL CRUD OPERATIONS
+  © 2026 SMART NOTICE BOARD SYSTEM | HQUARE ELECTRONICS | HEMANT HARLALKA | All Rights Reserved
 </div>
 
-<script src="js/configuration-complete.js"></script>
+<script src="js/settings.js"></script>
 </body>
 </html>

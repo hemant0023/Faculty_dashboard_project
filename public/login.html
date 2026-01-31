@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ECE DEPT SMART NOTICE BOARD</title>
+<title>SMART NOTICE BOARD</title>
 <style>
 * {
     margin: 0;
@@ -110,6 +110,14 @@ body {
     display: none;
     font-size: 14px;
 }
+/* ===== FOOTER ===== */
+.footer {
+    text-align: center;
+    padding: 20px;
+    color: white;
+    font-size: 13px;
+    margin-top: 30px;
+}
 
 .footer-text {
     text-align: center;
@@ -149,8 +157,8 @@ body {
 
     <div class="footer-text">
         <p>Demo Credentials:<br>
-        Admin: admin@university.edu / admin123<br>
-        Faculty: hemant.harlalka@university.edu / faculty123</p>
+        Admin:  <br>
+        Faculty: hemantharlalka@university.edu / hemant@123</p>
     </div>
 </div>
 
@@ -198,8 +206,8 @@ body {
     }else{
     
     try {
-
-        const API_URL = 'http://localhost:5000/api';
+        const API_URL = '/api';
+       // const API_URL = 'http://localhost:5000/api';
          console.log('TRY LOGIN FETCH',API_URL);
         
         const response = await fetch(`${API_URL}/auth/login`, {
@@ -240,6 +248,10 @@ body {
 }
 //});
 </script>
+
+<div class="footer">
+  © 2026 SMART NOTICE BOARD SYSTEM 
+</div>
 
 </body>
 </html>

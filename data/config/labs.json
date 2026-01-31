@@ -1,0 +1,58 @@
+[
+  {
+    "id": "LAB-20260116_005909-Y8TY",
+     "departmentId": "DEPT-20260119_013352-EUSW",
+    "name": "Digital Electronics Lab",
+    "code": "LAB-ECE-01",
+    "room": "LAB-301",
+    "capacity": 30,
+    "type": "practical",
+    "equipment": "Standard lab equipment",
+    "safety": "Safety protocols enabled",
+    "incharge": "FAC-1012",
+    "status": "operational",
+    "createdAt": "2026-01-15T19:29:09.533Z"
+  },
+  {
+    "id": "LAB-20260116_005909-AI4K",
+    "departmentId": "DEPT-20260119_013352-EUSW",
+    "name": "Microprocessor Lab",
+    "code": "LAB-ECE-02",
+    "room": "LAB-302",
+    "capacity": 30,
+    "type": "practical",
+    "equipment": "Standard lab equipment",
+    "safety": "Safety protocols enabled",
+    "incharge": "FAC-1012",
+    "status": "operational",
+    "createdAt": "2026-01-15T19:29:09.533Z"
+  },
+  {
+    "id": "LAB-20260116_005909-Z9IG",
+     "departmentId": "DEPT-20260119_013352-EUSW",
+    "name": "Communication Lab",
+    "code": "LAB-ECE-03",
+    "room": "LAB-303",
+    "capacity": 30,
+    "type": "practical",
+    "equipment": "Standard lab equipment",
+    "safety": "Safety protocols enabled",
+    "incharge": "FAC-1012",
+    "status": "operational",
+    "createdAt": "2026-01-15T19:29:09.533Z"
+  },
+  {
+    "id": "LAB-20260116_005909-4W5O",
+   "departmentId": "DEPT-20260119_013352-EUSW",
+    "name": "VLSI Lab",
+    "code": "LAB-ECE-04",
+    "room": "LAB-304",
+    "capacity": 30,
+    "type": "practical",
+    "equipment": "Standard lab equipment",
+    "safety": "Safety protocols enabled",
+    "incharge": "FAC-1012",
+    "status": "operational",
+    "createdAt": "2026-01-15T19:29:09.533Z"
+  }
+]

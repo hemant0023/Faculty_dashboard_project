@@ -1362,110 +1362,189 @@ function getClassroomsByDepartment(departmentCode){
 /**
  * Fetch live data from a single ESP32 device
  */
-async function fetchLiveClassroomData(classroom){
+// async function fetchLiveClassroomData(classroom){
 
+
+//        // Skip if disabled
+//     if (!classroom.ATTENDANCE_DEVICE_ENABLED) {
+//         classroom.status = 'disabled';
+//        // classroom.sessions = [];
+//        // classroom.activeSession = null;
+//         classroom.temperature = null;
+//         classroom.humidity = null;
+//         return;
+//     }
+
+//     const deviceIP = classroom.ATTENDANCE_DEVICE_IP;
+//     const devicePort = classroom.ATTENDANCE_DEVICE_PORT;
+//     const url = `http://${deviceIP}:${devicePort}/api/classroom/live`;
+    
+//     // Get polling config (use classroom-specific or defaults)
+//     const timeout =       classroom.ATTENDANCE_DEVICE_POLLING?.timeout || 8000;
+//     const retryAttempts = classroom.ATTENDANCE_DEVICE_POLLING?.retryAttempts || 3;
+//     const retryDelay =    classroom.ATTENDANCE_DEVICE_POLLING?.retryDelay || 2000;
+    
+//     let lastError = null;
+    
+//     // Retry logic
+//     for (let attempt = 1; attempt <= retryAttempts; attempt++) {
+//         try {
+
+//             const response = await axios.get(url, { timeout });
+//             const liveData = response.data;
+            
+//             // Merge live data with classroom metadata
+//             const mergedData = {
+//                 // Classroom metadata (from config)
+//                 id: classroom.id,
+//                 classroomId:    classroom.classroomId,
+//                 department:     classroom.department,
+//                 departmentCode: classroom.departmentCode,
+//                 departmentId:   classroom.departmentId,
+//                 maxCapacity:    classroom.MAX_CAPCITY,
+//                 location:       classroom.LOCATION,
+                
+//                 // Device info
+//                 deviceIP:      classroom.ATTENDANCE_DEVICE_IP,
+//                 devicePort:    classroom.ATTENDANCE_DEVICE_PORT,
+//                 deviceSerialNo: classroom.ATTENDANCE_DEVICE_SERIAL_NO,
+                
+//                 // Live data from ESP32
+//                 ...liveData,
+                
+//                 // Status
+//                 status: 'online',
+//                 lastUpdated: new Date().toISOString(),
+//                 lastSuccessfulPoll: Date.now()
+//             };
+            
+//             // Cache the data
+//             liveClassroomData.set(classroom.classroomId, mergedData);
+            
+//             // Update status
+//             classroomStatus.set(classroom.classroomId, {
+//                 status: 'online',
+//                 lastSeen: Date.now(),
+//                 errorCount: 0,
+//                 lastError: null
+//             });
+            
+//             console.log(`✓ Fetched live data from ${classroom.classroomId} (${deviceIP})`);
+//             return mergedData;
+            
+//         }catch (error){
+
+//             lastError = error.message;
+//             if (attempt < retryAttempts){
+//                 console.log(`⚠ Retry ${attempt}/${retryAttempts} for ${classroom.classroomId}: ${error.message}`);
+//                 await new Promise(resolve => setTimeout(resolve, retryDelay));
+//             }
+//         }
+//     }
+    
+//     // All retries failed
+//     console.error(`✗ Failed to fetch from ${classroom.classroomId} after ${retryAttempts} attempts: ${lastError}`);
+    
+//     // Update status
+//     const status = classroomStatus.get(classroom.classroomId) || { errorCount: 0 };
+//     status.errorCount = (status.errorCount || 0) + 1;
+//     status.status = 'offline';
+//     status.lastError = lastError;
+//     classroomStatus.set(classroom.classroomId, status);
+    
+//     // Return cached data if available
+//     const cachedData = liveClassroomData.get(classroom.classroomId);
+//     if (cachedData) {
+//         cachedData.status = 'offline';
+//         cachedData.stale = true;
+//         return cachedData;
+//     }
+    
+//     // Return offline placeholder with metadata
+//     return {
+//         id: classroom.id,
+//         classroomId: classroom.classroomId,
+//         department: classroom.department,
+//         departmentCode: classroom.departmentCode,
+//         maxCapacity: classroom.MAX_CAPCITY,
+//         location: classroom.LOCATION,
+//         status: 'offline',
+//         sessions: [],
+//         activeSession: null,
+//         temperature: null,
+//         humidity: null,
+//         lastError: lastError
+//     };
+// }
+
+async function fetchLiveClassroomData(classroom) {
+    // Skip if disabled
+    if (!classroom.ATTENDANCE_DEVICE_ENABLED) {
+        classroom.status = 'disabled';
+      //  classroom.sessions = [];
+      //  classroom.activeSession = null;
+        classroom.temperature = null;
+        classroom.humidity = null;
+        return;
+    }
+    
     const deviceIP = classroom.ATTENDANCE_DEVICE_IP;
-    const devicePort = classroom.ATTENDANCE_DEVICE_PORT;
+    const devicePort = classroom.ATTENDANCE_DEVICE_PORT || 80;
     const url = `http://${deviceIP}:${devicePort}/api/classroom/live`;
     
-    // Get polling config (use classroom-specific or defaults)
-    const timeout =       classroom.ATTENDANCE_DEVICE_POLLING?.timeout || 8000;
-    const retryAttempts = classroom.ATTENDANCE_DEVICE_POLLING?.retryAttempts || 3;
-    const retryDelay =    classroom.ATTENDANCE_DEVICE_POLLING?.retryDelay || 2000;
+    const timeout = classroom.ATTENDANCE_DEVICE_POLLING?.timeout || 5000;
+    const retryAttempts = classroom.ATTENDANCE_DEVICE_POLLING?.retryAttempts || 2;
+    const retryDelay = classroom.ATTENDANCE_DEVICE_POLLING?.retryDelay || 1000;
     
-    let lastError = null;
-    
-    // Retry logic
+    // Retry loop
     for (let attempt = 1; attempt <= retryAttempts; attempt++) {
         try {
-
             const response = await axios.get(url, { timeout });
-            const liveData = response.data;
+            const esp32Data = response.data;
+             
+            // ✅ DIRECTLY UPDATE CLASSROOM OBJECT (single source!)
+            classroom.temperature = esp32Data.temperature || null;
+            classroom.humidity    = esp32Data.humidity || null;
             
-            // Merge live data with classroom metadata
-            const mergedData = {
-                // Classroom metadata (from config)
-                id: classroom.id,
-                classroomId:    classroom.classroomId,
-                department:     classroom.department,
-                departmentCode: classroom.departmentCode,
-                departmentId:   classroom.departmentId,
-                maxCapacity:    classroom.MAX_CAPCITY,
-                location:       classroom.LOCATION,
-                
-                // Device info
-                deviceIP:      classroom.ATTENDANCE_DEVICE_IP,
-                devicePort:    classroom.ATTENDANCE_DEVICE_PORT,
-                deviceSerialNo: classroom.ATTENDANCE_DEVICE_SERIAL_NO,
-                
-                // Live data from ESP32
-                ...liveData,
-                
-                // Status
-                status: 'online',
-                lastUpdated: new Date().toISOString(),
-                lastSuccessfulPoll: Date.now()
-            };
-            
-            // Cache the data
-            liveClassroomData.set(classroom.classroomId, mergedData);
-            
-            // Update status
-            classroomStatus.set(classroom.classroomId, {
-                status: 'online',
-                lastSeen: Date.now(),
-                errorCount: 0,
-                lastError: null
-            });
-            
-            console.log(`✓ Fetched live data from ${classroom.classroomId} (${deviceIP})`);
-            return mergedData;
-            
-        }catch (error){
+            classroom.sessions    = esp32Data.sessions || [];
+            classroom.activeSession = esp32Data.activeSession || null;
+            classroom.status = 'online';
+            classroom.lastUpdated = new Date().toISOString();
+            classroom.lastError = null;
 
-            lastError = error.message;
-            if (attempt < retryAttempts){
-                console.log(`⚠ Retry ${attempt}/${retryAttempts} for ${classroom.classroomId}: ${error.message}`);
+           
+            // classroom.classId =esp32Data.classId ;
+            // classroom.semester = esp32Data.semester ;
+            // classroom.section = esp32Data.section;
+            // classroom.subject=  esp32Data.subject;
+            // classroom.faculty = esp32Data.faculty;
+            // classroom.totalStudents =esp32Data.totalStudents ;
+            // classroom.presentStudents= esp32Data.presentStudents;
+            // classroom.absentStudents = esp32Data.absentStudents;
+            // classroom.attendancePercentage = esp32Data.attendancePercentage ;
+            
+            console.log(`✓ ${classroom.classroomId}: Online ${esp32Data.activeSession ? '(Session Active)' : ''}`);
+            return true;
+            
+        } catch (error) {
+            if (attempt < retryAttempts) {
+                console.log(`⚠ ${classroom.classroomId}: Retry ${attempt}/${retryAttempts}`);
                 await new Promise(resolve => setTimeout(resolve, retryDelay));
+            } else {
+                // All retries failed
+                console.error(`✗ ${classroom.classroomId}: Offline - ${error.message}`);
+                
+                // ✅ KEEP OLD DATA, just mark as offline
+                classroom.status = 'offline';
+                classroom.lastError = error.message;
+                // temperature, humidity, sessions, activeSession remain unchanged
+                // This way UI still shows last known data
             }
         }
     }
     
-    // All retries failed
-    console.error(`✗ Failed to fetch from ${classroom.classroomId} after ${retryAttempts} attempts: ${lastError}`);
-    
-    // Update status
-    const status = classroomStatus.get(classroom.classroomId) || { errorCount: 0 };
-    status.errorCount = (status.errorCount || 0) + 1;
-    status.status = 'offline';
-    status.lastError = lastError;
-    classroomStatus.set(classroom.classroomId, status);
-    
-    // Return cached data if available
-    const cachedData = liveClassroomData.get(classroom.classroomId);
-    if (cachedData) {
-        cachedData.status = 'offline';
-        cachedData.stale = true;
-        return cachedData;
-    }
-    
-    // Return offline placeholder with metadata
-    return {
-        id: classroom.id,
-        classroomId: classroom.classroomId,
-        department: classroom.department,
-        departmentCode: classroom.departmentCode,
-        maxCapacity: classroom.MAX_CAPCITY,
-        location: classroom.LOCATION,
-        status: 'offline',
-        sessions: [],
-        activeSession: null,
-        temperature: null,
-        humidity: null,
-        lastError: lastError
-    };
+    return false;
 }
-
 
 async function pollAllClassrooms(){
     
@@ -1474,13 +1553,22 @@ async function pollAllClassrooms(){
         console.log('⚠ No enabled classrooms to poll');
         return;
     }
-    
+
+
+
     console.log(`\n🔄 Polling ${enabled.length} classroom(s)...`);
     const startTime = Date.now();
+
     const promises = enabled.map(c => fetchLiveClassroomData(c));
+   
     const results = await Promise.allSettled(promises);
     const successful = results.filter(r => r.status === 'fulfilled').length;
-    const elapsed = Date.now() - startTime;
+    
+     const elapsed = Date.now() - startTime;
+    const  online = classrooms.filter(c => c.status === 'online').length;
+    const  offline = classrooms.filter(c => c.status === 'offline').length;
+    
+    console.log(`✓ Poll complete: ${online} online, ${offline} offline (${elapsed}ms)\n`);
     console.log(`✓ Poll complete: ${successful}/${enabled.length} successful (${elapsed}ms)\n`);
 }
 
@@ -1534,13 +1622,76 @@ function stopPolling() {
  * Returns live data from all classrooms
  */
 app.get('/api/classroom/live', (req, res) => {
+  try {
+
+    const departmentCode = req.query.department;
+    
+    let filtered = classrooms;
+    
+    if (departmentCode) {
+        filtered = classroomConfig.filter(c => c.departmentCode === departmentCode);
+    }
    
-   try {
-    res.json({ success: true, count: classrooms.length, data: classrooms });
+    const response = filtered.map(classroom => ({
+        // Static metadata
+        id: classroom.id,
+        classroomId: classroom.classroomId,
+        department: classroom.department,
+        departmentCode: classroom.departmentCode,
+        departmentId: classroom.departmentId,
+        maxCapacity: classroom.MAX_CAPCITY,
+        location: classroom.LOCATION,
+        
+        // Device info
+        deviceIP: classroom.ATTENDANCE_DEVICE_IP,
+        deviceEnabled: classroom.ATTENDANCE_DEVICE_ENABLED,
+        
+        // Live data (from ESP32)
+        temperature: classroom.temperature,
+        humidity: classroom.humidity,
+        sessions: classroom.sessions || [],           // Today's sessions
+        activeSession: classroom.activeSession || null, // Current active session
+        
+        // Status
+        status: classroom.status,
+        lastUpdated: classroom.lastUpdated,
+        lastError: classroom.lastError
+    }));
+    
+    res.json({
+        success: true,
+        count: response.length,
+        data: response
+    });
+
+   // res.json({ success: true, count: filtered.length, data: filtered });
+
     } catch (error) {
          console.error('Error in /api/classroom/live:', error);
         res.status(500).json({success: false, error: error.message});
      }
+});
+
+app.get('/api/classroom/status', (req, res) => {
+
+    const total = classrooms.length;
+    const enabled = classrooms.filter(c => c.ATTENDANCE_DEVICE_ENABLED === true).length;
+    const disabled = total - enabled;
+    const online = classrooms.filter(c => c.status === 'online').length;
+    const offline = classrooms.filter(c => c.status === 'offline').length;
+    const activeClasses = classrooms.filter(c => c.activeSession !== null).length;
+    
+    res.json({
+        success: true,
+        summary: {
+            total: total,
+            enabled: enabled,
+            disabled: disabled,
+            online: online,
+            offline: offline,
+            activeClasses: activeClasses
+        }
+    });
 });
 
 
@@ -1709,37 +1860,27 @@ app.get('/api/classroom/:classroomId/sessions/today', async (req, res) => {
  * GET /api/classroom/status
  * Returns status of all ESP32 devices
  */
-app.get('/api/classroom/status', (req, res) => {
-    const statuses = [];
+
+/**
+ * GET /api/classroom/status
+ * Returns status summary
+ */
+/**
+ * POST /api/classroom/poll
+ * Manually trigger polling
+ */
+app.post('/api/classroom/poll', async (req, res) => {
+    console.log('POST /api/classroom/poll - Manual trigger');
     
-    for (const classroom of classroomConfig) {
-        const status = classroomStatus.get(classroom.classroomId) || {
-            status: 'unknown',
-            errorCount: 0
-        };
-        
-        statuses.push({
-            id: classroom.id,
-            classroomId: classroom.classroomId,
-            department: classroom.department,
-            departmentCode: classroom.departmentCode,
-            location: classroom.LOCATION,
-            deviceIP: classroom.ATTENDANCE_DEVICE_IP,
-            devicePort: classroom.ATTENDANCE_DEVICE_PORT,
-            enabled: classroom.ATTENDANCE_DEVICE_ENABLED,
-            status: status.status,
-            lastSeen: status.lastSeen,
-            errorCount: status.errorCount,
-            lastError: status.lastError
-        });
-    }
+    await pollAllClassrooms();
     
     res.json({
         success: true,
-        data: statuses,
-        count: statuses.length
+        message: 'Poll completed',
+        timestamp: new Date().toISOString()
     });
 });
+
 
 /**
  * POST /api/classroom/poll
@@ -1799,7 +1940,7 @@ app.post('/api/classroom/:classroomId/poll', async (req, res) => {
  */
 app.get('/api/statistics/overview', (req, res) => {
     const stats = {
-        totalClassrooms: classroomConfig.length,
+        totalClassrooms: classrooms.length,
         enabledClassrooms: getEnabledClassrooms().length,
         onlineClassrooms: Array.from(classroomStatus.values()).filter(s => s.status === 'online').length,
         offlineClassrooms: Array.from(classroomStatus.values()).filter(s => s.status === 'offline').length,
@@ -1833,11 +1974,47 @@ app.get('/api/statistics/overview', (req, res) => {
     });
 });
 
+
+async function START_CLASSROOM_MONITORING() {
+
+    console.log('============================================================');
+    console.log('🎓 SMART CLASSROOM MONITORING -SERVER');
+    console.log('============================================================\n');
+    
+    if (classrooms.length === 0) {
+        console.error('✗ No classrooms loaded. Please check classroom_config.json');
+        process.exit(1);
+    }
+    
+    // Show summary
+    const enabled = classrooms.filter(c => c.ATTENDANCE_DEVICE_ENABLED === true).length;
+    console.log(`📊 Total classrooms: ${classrooms.length}`);
+    console.log(`✓  Enabled devices: ${enabled}`);
+    console.log(`✗  Disabled devices: ${classrooms.length - enabled}\n`);
+    
+    // List classrooms
+    console.log('📋 Classroom List:');
+    classrooms.forEach(c => {
+        const status = c.ATTENDANCE_DEVICE_ENABLED ? '✓' : '✗';
+        console.log(`   ${status} ${c.classroomId} (${c.department}) - ${c.ATTENDANCE_DEVICE_IP}`);
+    });
+    console.log('');
+    
+    // Start polling
+    startPolling();
+
+
+}
+
+
+
+
 /**
  * GET /api/statistics/department/:departmentCode
  * Department-specific statistics
  */
 app.get('/api/statistics/department/:departmentCode', (req, res) => {
+
     const { departmentCode } = req.params;
     
     const departmentClassrooms = getClassroomsByDepartment(departmentCode);
@@ -1909,7 +2086,7 @@ app.listen(PORT, () => {
     console.log(`💚 Health: http://localhost:${PORT}/api/health`);
     
    startMdnsAdvertisement(PORT);
-    startPolling();
+  START_CLASSROOM_MONITORING();
     
     console.log('\n📊 SINGLE SOURCE OF TRUTH:');
     console.log('   📁 data/config/universities.json');
